@@ -28,7 +28,7 @@
             </div>
           `;
 
-          // Editar
+          // Edit
           cardEl.querySelector('.edit-btn').onclick = () => {
             const newText = prompt('Nuevo texto:', card.text);
             const newAssigned = prompt('Nuevo responsable:', card.assignedTo);
@@ -37,7 +37,7 @@
             renderBoard();
           };
 
-          // Eliminar
+          // Delete
           cardEl.querySelector('.delete-btn').onclick = () => {
             col.cards = col.cards.filter(c => c.id !== card.id);
             renderBoard();
@@ -54,7 +54,7 @@
       const taskForm = document.getElementById('taskForm');
       const taskColumnSelect = document.getElementById('taskColumn');
 
-      // Llenar el select de columnas
+      // Fill the select columns
       taskColumnSelect.innerHTML = "";
       data.columns.forEach(col => {
         const opt = document.createElement('option');
@@ -63,7 +63,7 @@
         taskColumnSelect.appendChild(opt);
       });
 
-      // Crear nueva tarea
+      // Create new task
       taskForm.onsubmit = e => {
         e.preventDefault();
         const text = document.getElementById('taskText').value;
