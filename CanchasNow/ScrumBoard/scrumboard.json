@@ -1,0 +1,59 @@
+{
+  "columns": [
+    {
+      "id": "product_backlog",
+      "title": "Product Backlog",
+      "cards": [
+        { "id": "t1", "text": "Define project scope", "assignedTo": "Diego Teran", "color": "--yellow" },
+        { "id": "t2", "text": "Identify customer requirements", "assignedTo": "Juan Barrios", "color": "--purple" }
+      ]
+    },
+    {
+      "id": "user_story",
+      "title": "User Story",
+      "cards": [
+        { "id": "t3", "text": "As a user I want to register", "assignedTo": "Edison Avellaneda", "color": "--blue" },
+        { "id": "t4", "text": "As admin I want to create events", "assignedTo": "Keiner Lara", "color": "--green" }
+      ]
+    },
+    {
+      "id": "work_to_do",
+      "title": "Work to Do",
+      "cards": [
+        { "id": "t5", "text": "Design the initial database", "assignedTo": "Keiner Lara", "color": "--pink" },
+        { "id": "t6", "text": "Set up development", "assignedTo": "Brayan Sainea", "color": "--orange" }
+      ]
+    },
+    {
+      "id": "work_in_progress",
+      "title": "Work in Progress",
+      "cards": [
+        { "id": "t7", "text": "Implement user login", "assignedTo": "Juan Barrios", "color": "--yellow" },
+        { "id": "t8", "text": "Connect API with fronted", "assignedTo": "Diego Teran", "color": "--blue" }
+      ]
+    },
+    {
+      "id": "on_hold",
+      "title": "On Hold",
+      "cards": [
+        { "id": "t9", "text": "Design landing page", "assignedTo": "Edison Avellaneda", "color": "--purple" }
+      ]
+    },
+    {
+      "id": "work_done",
+      "title": "Work Done",
+      "cards": [
+        { "id": "t10", "text": "Create repository on GitHub", "assignedTo": "Keiner Lara", "color": "--green" },
+        { "id": "t11", "text": "Install core dependencies", "assignedTo": "Juan Barrios", "color": "--pink" }
+      ]
+    },
+    {
+      "id": "work_in_review",
+      "title": "Work in Review",
+      "cards": [
+        { "id": "t12", "text": "Check authentication", "assignedTo": "Keiner Lara", "color": "--orange" },
+        { "id": "t13", "text": "Test CRUD of events", "assignedTo": "Diego Teran", "color": "--blue" }
+      ]
+    }
+  ]
+}

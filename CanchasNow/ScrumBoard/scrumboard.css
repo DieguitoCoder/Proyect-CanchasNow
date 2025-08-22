@@ -1,0 +1,106 @@
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 10px;
+    }
+    /* Formulario */
+    #taskForm {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      background: #ffffff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+    #taskForm input,
+    #taskForm select {
+      flex: 1;
+      min-width: 150px;
+      padding: 8px 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      transition: 0.2s;
+    }
+    #taskForm input:focus,
+    #taskForm select:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 4px rgba(0,123,255,0.3);
+    }
+    #taskForm button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      font-size: 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    #taskForm button:hover {
+      background: #0056b3;
+    }
+    /* Board */
+    .board {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+    }
+    .column {
+      background: #fff;
+      border-radius: 10px;
+      padding: 10px;
+      min-width: 250px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .column h2 {
+      text-align: center;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    .card {
+      background: #eaeaea;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card-content {
+      margin-bottom: 8px;
+    }
+    .card span {
+      font-size: 12px;
+      color: #555;
+      display: block;
+      margin-top: 5px;
+    }
+    .card-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    .card button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .edit-btn { color: blue; }
+    .delete-btn { color: red; }
+    /* Colores personalizados */
+    .--yellow { background: #fff3b0; }
+    .--purple { background: #e0bbff; }
+    .--blue { background: #a3d8f4; }
+    .--green { background: #b4f8c8; }
+    .--pink { background: #ffb3c6; }
+    .--orange { background: #ffd6a5; }
