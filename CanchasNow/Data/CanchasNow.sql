@@ -57,3 +57,5 @@ CREATE TABLE reservations (
     FOREIGN KEY (field_id) REFERENCES fields(field_id),
     FOREIGN KEY (schedule_id) REFERENCES schedules(schedule_id)
 );
+
+--
