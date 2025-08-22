@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kanban Board</title>
+  <title>Scrum Board</title>
   <link rel="stylesheet" href="./scrumboard.css">
 </head>
 <body>
-  <h1>Kanban Board</h1>
+  <h1>Scrum Board</h1>
 
   <!-- Formulario para crear nuevas tareas -->
   <form id="taskForm">
-    <input type="text" id="taskText" placeholder="Tarea" required>
-    <input type="text" id="taskAssigned" placeholder="Responsable" required>
+    <input type="text" id="taskText" placeholder="Task" required>
+    <input type="text" id="taskAssigned" placeholder="Responsible" required>
     <select id="taskColor">
       <option value="--yellow">Yellow</option>
       <option value="--purple">Purple</option>
@@ -22,7 +22,7 @@
       <option value="--orange">Orange</option>
     </select>
     <select id="taskColumn"></select>
-    <button type="submit">➕ Agregar</button>
+    <button type="submit">➕ Add</button>
   </form>
 
   <div class="board" id="board"></div>
