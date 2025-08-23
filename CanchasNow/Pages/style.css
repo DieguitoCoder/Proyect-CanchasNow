@@ -1,0 +1,772 @@
+/* Eco Wellness Login Form - Complete & Self-Contained */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif;
+    background: linear-gradient(135deg, #a8e6cf 0%, #dcedc8 50%, #f8f8f8 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    line-height: 1.6;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Natural Background Elements */
+.nature-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.floating-leaf {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(ellipse at center, #4caf50, #66bb6a);
+    border-radius: 0 100% 0 100%;
+    opacity: 0.4;
+    animation: floatLeaf 8s ease-in-out infinite;
+}
+
+.leaf-1 {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+    transform: rotate(45deg);
+}
+
+.leaf-2 {
+    top: 60%;
+    left: 85%;
+    animation-delay: 2s;
+    transform: rotate(-30deg);
+}
+
+.leaf-3 {
+    top: 80%;
+    left: 15%;
+    animation-delay: 4s;
+    transform: rotate(60deg);
+}
+
+.leaf-4 {
+    top: 30%;
+    left: 75%;
+    animation-delay: 6s;
+    transform: rotate(-45deg);
+}
+
+@keyframes floatLeaf {
+    0%, 100% { transform: translateY(0) rotate(var(--rotation, 0deg)); opacity: 0.4; }
+    50% { transform: translateY(-20px) rotate(calc(var(--rotation, 0deg) + 10deg)); opacity: 0.7; }
+}
+
+.login-container {
+    width: 100%;
+    max-width: 440px;
+    position: relative;
+    z-index: 1;
+}
+
+.wellness-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    border-radius: 32px;
+    padding: 48px 40px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(76, 175, 80, 0.15);
+}
+
+.organic-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #4caf50, #8bc34a, #cddc39, #8bc34a, #4caf50);
+    background-size: 200% 100%;
+    animation: organicFlow 4s ease-in-out infinite;
+    border-radius: 32px 32px 0 0;
+}
+
+@keyframes organicFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.mindful-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.zen-logo {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4caf50;
+}
+
+.zen-logo svg {
+    position: relative;
+    z-index: 2;
+    animation: zenBreath 4s ease-in-out infinite;
+}
+
+@keyframes zenBreath {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.zen-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: zenGlow 3s ease-in-out infinite;
+}
+
+@keyframes zenGlow {
+    0%, 100% { transform: scale(1); opacity: 0.6; }
+    50% { transform: scale(1.2); opacity: 0.8; }
+}
+
+.mindful-header h1 {
+    color: #2e7d32;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.mindful-header p {
+    color: #66bb6a;
+    font-size: 15px;
+    font-weight: 400;
+}
+
+/* Organic Form Fields */
+.organic-field {
+    position: relative;
+    margin-bottom: 32px;
+}
+
+.field-nature {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(76, 175, 80, 0.05);
+    border: 1.5px solid rgba(76, 175, 80, 0.2);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.organic-field input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 18px 60px 18px 20px;
+    color: #2e7d32;
+    font-size: 16px;
+    font-weight: 400;
+    outline: none;
+    position: relative;
+    z-index: 2;
+    font-family: inherit;
+}
+
+.organic-field input::placeholder {
+    color: transparent;
+}
+
+.organic-field label {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #81c784;
+    font-size: 16px;
+    font-weight: 400;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 3;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0 8px;
+}
+
+.organic-field input:focus + label,
+.organic-field input:not(:placeholder-shown) + label {
+    top: 0;
+    font-size: 13px;
+    font-weight: 500;
+    color: #4caf50;
+    transform: translateY(-50%);
+}
+
+.organic-field input:focus ~ .field-nature {
+    border-color: #4caf50;
+    background: rgba(76, 175, 80, 0.1);
+    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.growth-indicator {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    z-index: 4;
+}
+
+.leaf-sprout {
+    width: 100%;
+    height: 100%;
+    background: #4caf50;
+    border-radius: 0 100% 0 100%;
+    opacity: 0;
+    transform: scale(0) rotate(45deg);
+    animation: sproutGrow 0.5s ease-out forwards;
+}
+
+.organic-field input:focus ~ .growth-indicator .leaf-sprout,
+.organic-field input:valid ~ .growth-indicator .leaf-sprout {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+}
+
+@keyframes sproutGrow {
+    0% { opacity: 0; transform: scale(0) rotate(45deg); }
+    100% { opacity: 1; transform: scale(1) rotate(45deg); }
+}
+
+/* Nature Toggle */
+.organic-field:has(.nature-toggle) input {
+    padding-right: 56px;
+}
+
+.nature-toggle {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #81c784;
+    padding: 8px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nature-toggle:hover {
+    color: #4caf50;
+    background: rgba(76, 175, 80, 0.1);
+}
+
+.eye-hidden {
+    display: none;
+}
+
+.nature-toggle.toggle-visible .eye-visible {
+    display: none;
+}
+
+.nature-toggle.toggle-visible .eye-hidden {
+    display: block;
+}
+
+/* Mindful Options */
+.mindful-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 36px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.zen-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #4caf50;
+    font-weight: 500;
+}
+
+.zen-checkbox input[type="checkbox"] {
+    display: none;
+}
+
+.checkbox-leaf {
+    width: 22px;
+    height: 22px;
+    margin-right: 12px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.leaf-shape {
+    width: 100%;
+    height: 100%;
+    background: rgba(76, 175, 80, 0.1);
+    border: 1.5px solid rgba(76, 175, 80, 0.3);
+    border-radius: 0 100% 0 100%;
+    transform: rotate(45deg);
+    transition: all 0.3s ease;
+    position: absolute;
+}
+
+.checkbox-leaf svg {
+    color: transparent;
+    transition: color 0.3s ease;
+    position: relative;
+    z-index: 1;
+    transform: rotate(-45deg);
+}
+
+.zen-checkbox input[type="checkbox"]:checked + .checkbox-leaf .leaf-shape {
+    background: #4caf50;
+    border-color: #4caf50;
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.4);
+}
+
+.zen-checkbox input[type="checkbox"]:checked + .checkbox-leaf svg {
+    color: #ffffff;
+}
+
+.healing-link {
+    color: #4caf50;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.healing-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    transition: width 0.3s ease;
+}
+
+.healing-link:hover::after {
+    width: 100%;
+}
+
+.healing-link:hover {
+    color: #2e7d32;
+}
+
+/* Harmony Button */
+.harmony-button {
+    width: 100%;
+    background: transparent;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    position: relative;
+    margin-bottom: 32px;
+    overflow: hidden;
+    min-height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-earth {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #4caf50, #66bb6a, #8bc34a);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.harmony-button:hover .button-earth {
+    background: linear-gradient(135deg, #388e3c, #4caf50, #66bb6a);
+    transform: scale(1.02);
+}
+
+.harmony-button:active .button-earth {
+    transform: scale(0.98);
+}
+
+.button-text {
+    position: relative;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+.button-growth {
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    gap: 6px;
+}
+
+.growing-circle {
+    width: 8px;
+    height: 8px;
+    background: #ffffff;
+    border-radius: 50%;
+    animation: organicGrow 1.5s ease-in-out infinite;
+}
+
+.circle-2 { animation-delay: 0.2s; }
+.circle-3 { animation-delay: 0.4s; }
+
+@keyframes organicGrow {
+    0%, 80%, 100% { transform: scale(0.8); opacity: 0.6; }
+    40% { transform: scale(1.2); opacity: 1; }
+}
+
+.harmony-button.loading .button-text {
+    opacity: 0;
+}
+
+.harmony-button.loading .button-growth {
+    opacity: 1;
+}
+
+.button-aura {
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    background: linear-gradient(135deg, #4caf50, #8bc34a);
+    border-radius: 23px;
+    opacity: 0;
+    filter: blur(12px);
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.harmony-button:hover .button-aura {
+    opacity: 0.6;
+}
+
+/* Balance Divider */
+.balance-divider {
+    display: flex;
+    align-items: center;
+    margin: 32px 0;
+    gap: 16px;
+}
+
+.divider-branch {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(76, 175, 80, 0.4), transparent);
+}
+
+.divider-center {
+    color: #4caf50;
+    opacity: 0.7;
+    animation: centerPulse 3s ease-in-out infinite;
+}
+
+@keyframes centerPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Natural Social */
+.natural-social {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.earth-social {
+    flex: 1;
+    background: transparent;
+    color: #4caf50;
+    border: none;
+    border-radius: 16px;
+    padding: 14px 16px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    min-height: 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-earth {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(76, 175, 80, 0.1);
+    border: 1.5px solid rgba(76, 175, 80, 0.2);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.earth-social:hover .social-earth {
+    background: rgba(76, 175, 80, 0.15);
+    border-color: rgba(76, 175, 80, 0.4);
+}
+
+.earth-social span,
+.earth-social svg {
+    position: relative;
+    z-index: 2;
+}
+
+.social-glow {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: rgba(76, 175, 80, 0.3);
+    border-radius: 18px;
+    opacity: 0;
+    filter: blur(8px);
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.earth-social:hover .social-glow {
+    opacity: 1;
+}
+
+/* Nurture Signup */
+.nurture-signup {
+    text-align: center;
+    font-size: 14px;
+    color: #66bb6a;
+}
+
+.growth-link {
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.growth-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #4caf50, #8bc34a);
+    transition: width 0.3s ease;
+}
+
+.growth-link:hover::after {
+    width: 100%;
+}
+
+.growth-link:hover {
+    color: #2e7d32;
+}
+
+/* Gentle Error */
+.gentle-error {
+    color: #ff7043;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 8px;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 5;
+}
+
+.gentle-error.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.organic-field.error .field-nature {
+    border-color: #ff7043;
+    background: rgba(255, 112, 67, 0.1);
+}
+
+.organic-field.error label {
+    color: #ff5722;
+}
+
+/* Harmony Success */
+.harmony-success {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.harmony-success.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.success-mandala {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mandala-ring {
+    position: absolute;
+    border: 2px solid #4caf50;
+    border-radius: 50%;
+    animation: mandalaGrow 1.2s ease-out forwards;
+    opacity: 0;
+}
+
+.ring-1 {
+    width: 60px;
+    height: 60px;
+    top: 15px;
+    left: 15px;
+    animation-delay: 0s;
+}
+
+.ring-2 {
+    width: 75px;
+    height: 75px;
+    top: 7.5px;
+    left: 7.5px;
+    animation-delay: 0.2s;
+}
+
+.ring-3 {
+    width: 90px;
+    height: 90px;
+    top: 0;
+    left: 0;
+    animation-delay: 0.4s;
+}
+
+@keyframes mandalaGrow {
+    0% { opacity: 0; transform: scale(0) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.1) rotate(180deg); }
+    100% { opacity: 0.8; transform: scale(1) rotate(360deg); }
+}
+
+.mandala-center {
+    position: relative;
+    z-index: 2;
+    color: #4caf50;
+    animation: centerBloom 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+@keyframes centerBloom {
+    0% { opacity: 0; transform: scale(0); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.harmony-success h3 {
+    color: #2e7d32;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.harmony-success p {
+    color: #66bb6a;
+    font-size: 14px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
+    
+    .wellness-card {
+        padding: 36px 28px;
+        border-radius: 24px;
+    }
+    
+    .mindful-header h1 {
+        font-size: 1.75rem;
+    }
+    
+    .zen-logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .mindful-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    
+    .natural-social {
+        flex-direction: column;
+    }
+    
+    .floating-leaf {
+        width: 16px;
+        height: 16px;
+    }
+}
