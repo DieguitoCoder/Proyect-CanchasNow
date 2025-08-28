@@ -66,23 +66,20 @@
 
     <script src="../../../../frontend/src/js/auth.js"></script>
     <script>
-        function handleLogin(event) {
+        async function handleLogin(event) {
             event.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
-
-            // Mock authentication
-            if (email && password) {
-                const user = authenticateUser(email, password);
-                if (user) {
-                    if (user.role === 'admin') {
-                        window.location.href = 'admin.html';
-                    } else {
-                        window.location.href = 'index.html';
-                    }
+            try {
+                const { login } = await import('../../../../frontend/src/auth.js');
+                const user = await login(email, password);
+                if (user.role === 'admin') {
+                    window.location.href = 'admin.html';
                 } else {
-                    alert('Invalid credentials. Please try again.');
+                    window.location.href = 'index.html';
                 }
+            } catch (err) {
+                alert('Credenciales inválidas o error de conexión.');
             }
         }
     </script>

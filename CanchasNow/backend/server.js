@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import { pool } from "./db.js";
-import authRoutes from "./routes/auth.routes.js";
+import authRoutes from "./routes/auth.routes.js"; // Importing authRoutes for authentication
 import usersRoutes from "./routes/users.routes.js";
 import fieldsRoutes from "./routes/fields.routes.js";
 import reservationsRoutes from "./routes/reservations.routes.js";
@@ -24,6 +24,7 @@ app.use(
 
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 
+// Adding authentication routes
 app.use("/api/auth", authRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/fields", fieldsRoutes);
