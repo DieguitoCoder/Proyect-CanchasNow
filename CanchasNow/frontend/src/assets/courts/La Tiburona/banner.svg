@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" class="w-full h-full">
+  <defs>
+    <linearGradient id="championsGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f97316"/>
+      <stop offset="50%" style="stop-color:#ea580c"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="hardwoodGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+    <pattern id="woodPattern" patternUnits="userSpaceOnUse" width="40" height="8">
+      <rect width="40" height="8" fill="#f59e0b"/>
+      <line x1="0" y1="4" x2="40" y2="4" stroke="#d97706" stroke-width="0.5"/>
+      <line x1="20" y1="0" x2="20" y2="8" stroke="#d97706" stroke-width="0.3"/>
+    </pattern>
+  </defs>
+  
+  <!-- Arena background -->
+  <rect width="1200" height="400" fill="url(#championsGradient)"/>
+  
+  <!-- Stadium upper structure -->
+  <rect x="0" y="0" width="1200" height="100" fill="#1f2937"/>
+  <rect x="100" y="20" width="1000" height="60" fill="#374151"/>
+  
+  <!-- Championship banners -->
+  <rect x="200" y="30" width="40" height="60" fill="#dc2626"/>
+  <text x="220" y="65" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">2023</text>
+  <rect x="300" y="30" width="40" height="60" fill="#dc2626"/>
+  <text x="320" y="65" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">2022</text>
+  <rect x="400" y="30" width="40" height="60" fill="#dc2626"/>
+  <text x="420" y="65" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">2021</text>
+  
+  <rect x="760" y="30" width="40" height="60" fill="#dc2626"/>
+  <text x="780" y="65" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">2020</text>
+  <rect x="860" y="30" width="40" height="60" fill="#dc2626"/>
+  <text x="880" y="65" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">2019</text>
+  <rect x="960" y="30" width="40" height="60" fill="#dc2626"/>
+  <text x="980" y="65" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">2018</text>
+  
+  <!-- Arena seating -->
+  <rect x="0" y="100" width="200" height="80" fill="#4b5563"/>
+  <rect x="1000" y="100" width="200" height="80" fill="#4b5563"/>
+  
+  <!-- Seat rows -->
+  <g opacity="0.8">
+    <rect x="20" y="110" width="160" height="8" fill="#dc2626"/>
+    <rect x="20" y="122" width="160" height="8" fill="#f97316"/>
+    <rect x="20" y="134" width="160" height="8" fill="#dc2626"/>
+    <rect x="20" y="146" width="160" height="8" fill="#f97316"/>
+    <rect x="20" y="158" width="160" height="8" fill="#dc2626"/>
+    
+    <rect x="1020" y="110" width="160" height="8" fill="#dc2626"/>
+    <rect x="1020" y="122" width="160" height="8" fill="#f97316"/>
+    <rect x="1020" y="134" width="160" height="8" fill="#dc2626"/>
+    <rect x="1020" y="146" width="160" height="8" fill="#f97316"/>
+    <rect x="1020" y="158" width="160" height="8" fill="#dc2626"/>
+  </g>
+  
+  <!-- Hardwood court -->
+  <rect x="0" y="180" width="1200" height="220" fill="url(#woodPattern)"/>
+  
+  <!-- Basketball court -->
+  <rect x="100" y="220" width="1000" height="140" fill="none" stroke="white" stroke-width="5"/>
+  
+  <!-- Center court -->
+  <circle cx="600" cy="290" r="50" fill="none" stroke="white" stroke-width="4"/>
+  <circle cx="600" cy="290" r="3" fill="white"/>
+  
+  <!-- Three-point lines -->
+  <path d="M100 250 A 140 140 0 0 1 100 330" fill="none" stroke="white" stroke-width="4"/>
+  <path d="M1100 250 A 140 140 0 0 0 1100 330" fill="none" stroke="white" stroke-width="4"/>
+  
+  <!-- Paint areas -->
+  <rect x="100" y="260" width="120" height="60" fill="none" stroke="white" stroke-width="4"/>
+  <rect x="980" y="260" width="120" height="60" fill="none" stroke="white" stroke-width="4"/>
+  
+  <!-- Free throw circles -->
+  <circle cx="220" cy="290" r="30" fill="none" stroke="white" stroke-width="3"/>
+  <circle cx="980" cy="290" r="30" fill="none" stroke="white" stroke-width="3"/>
+  
+  <!-- Basketball hoops -->
+  <rect x="95" y="280" width="5" height="20" fill="#ff6b35"/>
+  <circle cx="97" cy="285" r="12" fill="none" stroke="#ff6b35" stroke-width="3"/>
+  <rect x="1100" y="280" width="5" height="20" fill="#ff6b35"/>
+  <circle cx="1102" cy="285" r="12" fill="none" stroke="#ff6b35" stroke-width="3"/>
+  
+  <!-- Backboards -->
+  <rect x="85" y="270" width="10" height="40" fill="white" stroke="#d1d5db" stroke-width="1"/>
+  <rect x="1105" y="270" width="10" height="40" fill="white" stroke="#d1d5db" stroke-width="1"/>
+  
+  <!-- Professional lighting -->
+  <rect x="250" y="90" width="50" height="10" fill="#fbbf24"/>
+  <rect x="450" y="90" width="50" height="10" fill="#fbbf24"/>
+  <rect x="650" y="90" width="50" height="10" fill="#fbbf24"/>
+  <rect x="850" y="90" width="50" height="10" fill="#fbbf24"/>
+  
+  <!-- Jumbotron -->
+  <rect x="500" y="40" width="200" height="100" fill="#1f2937"/>
+  <rect x="510" y="50" width="180" height="80" fill="#059669"/>
+  <text x="600" y="90" text-anchor="middle" fill="white" font-family="Arial" font-size="16" font-weight="bold">CHAMPIONS</text>
+  <text x="600" y="110" text-anchor="middle" fill="white" font-family="Arial" font-size="16" font-weight="bold">COURT</text>
+  
+  <!-- Team benches -->
+  <rect x="300" y="370" width="100" height="20" fill="#6b7280"/>
+  <rect x="800" y="370" width="100" height="20" fill="#6b7280"/>
+  
+  <!-- Referee area -->
+  <rect x="580" y="370" width="40" height="15" fill="#374151"/>
+  
+  <!-- Championship trophy silhouette -->
+  <rect x="50" y="30" width="20" height="30" fill="#fbbf24"/>
+  <rect x="45" y="45" width="30" height="8" fill="#fbbf24"/>
+  <rect x="40" y="55" width="40" height="12" fill="#fbbf24"/>
+  
+  <rect x="1130" y="30" width="20" height="30" fill="#fbbf24"/>
+  <rect x="1125" y="45" width="30" height="8" fill="#fbbf24"/>
+  <rect x="1120" y="55" width="40" height="12" fill="#fbbf24"/>
+  
+  <!-- Title overlay -->
+  <rect x="0" y="0" width="1200" height="400" fill="rgba(0,0,0,0.3)"/>
+  <text x="600" y="200" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="60" font-weight="bold">Champions Court</text>
+  <text x="600" y="240" text-anchor="middle" fill="#f97316" font-family="Arial, sans-serif" font-size="24">Elite Basketball Arena</text>
+</svg>

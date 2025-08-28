@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+  <defs>
+    <linearGradient id="locationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ef4444"/>
+      <stop offset="100%" style="stop-color:#dc2626"/>
+    </linearGradient>
+    <linearGradient id="pinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fbbf24"/>
+      <stop offset="100%" style="stop-color:#f59e0b"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Location pin main shape -->
+  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" fill="url(#locationGradient)" stroke="none"/>
+  
+  <!-- Inner pin highlight -->
+  <path d="M19 10c0 5.5-7 10-7 10s-7-4.5-7-10a7 7 0 0 1 14 0z" fill="none" stroke="white" stroke-width="0.5" opacity="0.6"/>
+  
+  <!-- Center circle -->
+  <circle cx="12" cy="10" r="3" fill="url(#pinGradient)" stroke="white" stroke-width="1"/>
+  
+  <!-- Inner dot -->
+  <circle cx="12" cy="10" r="1.5" fill="white"/>
+  
+  <!-- Court icon inside -->
+  <rect x="10.5" y="9" width="3" height="2" fill="#3b82f6" rx="0.2"/>
+  <line x1="12" y1="9" x2="12" y2="11" stroke="white" stroke-width="0.3"/>
+  
+  <!-- Location ripples -->
+  <circle cx="12" cy="10" r="5" fill="none" stroke="#ef4444" stroke-width="0.5" opacity="0.3"/>
+  <circle cx="12" cy="10" r="7" fill="none" stroke="#ef4444" stroke-width="0.3" opacity="0.2"/>
+  
+  <!-- Shadow effect -->
+  <ellipse cx="12" cy="22" rx="3" ry="1" fill="#000000" opacity="0.2"/>
+</svg>
