@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="checkout-container">
-    <a href="subscriptions.html" class="back-btn">⬅ <span>Back</span></a>
+  <a href="#" class="back-btn" onclick="window.history.back(); return false;">⬅ <span>Back</span></a>
 
     <h2>Complete Purchase</h2>
 
@@ -21,8 +21,8 @@
           <span id="plan-price"></span>
         </div>
         <div class="order-total">
-          <span>Total:</span>
-          <span id="total-price"></span>
+    <span>Total:</span>
+    <span id="total-price"></span>
         </div>
       </div>
     </div>
@@ -106,39 +106,53 @@
   const planPriceElement = document.getElementById("plan-price");
   const totalPriceElement = document.getElementById("total-price");
 
-  // Plan table
-  const plans = {
-    "usuario-basico": {
-      name: "Basic Plan (User)",
-      price: "$0"
-    },
-    "usuario-premium": {
-      name: "Premium Plan (User)",
-      price: "$9.99"
-    },
-    "admin-estandar": {
-      name: "Standard Plan (Admin)",
-      price: "$19.99"
-    },
-    "admin-premium": {
-      name: "Premium Plan (Admin)",
-      price: "$39.99"
-    }
-  };
-
-  // Get URL parameter
-  const params = new URLSearchParams(window.location.search);
-  const selectedPlan = params.get("plan");
-
-  if (selectedPlan && plans[selectedPlan]) {
-    const plan = plans[selectedPlan];
-    planNameElement.textContent = plan.name;
-    planPriceElement.textContent = plan.price;
-    totalPriceElement.textContent = plan.price;
+  // Try to get bookingData from sessionStorage
+  const bookingDataRaw = sessionStorage.getItem('bookingData');
+  if (bookingDataRaw) {
+    const bookingData = JSON.parse(bookingDataRaw);
+    let summary = bookingData.court || '';
+    if (bookingData.sport) summary += ` - ${bookingData.sport}`;
+    if (bookingData.courtType) summary += ` - ${bookingData.courtType}`;
+    if (bookingData.matchType) summary += ` - ${bookingData.matchType}`;
+    summary += ` (${bookingData.date} ${bookingData.time})`;
+    planNameElement.textContent = summary;
+    planPriceElement.textContent = `$${bookingData.price}`;
+    totalPriceElement.textContent = `$${bookingData.price}`;
   } else {
-    planNameElement.textContent = "No valid plan selected.";
-    planPriceElement.textContent = "";
-    totalPriceElement.textContent = "";
+    // Plan table
+    const plans = {
+      "usuario-basico": {
+        name: "Basic Plan (User)",
+        price: "$0"
+      },
+      "usuario-premium": {
+        name: "Premium Plan (User)",
+        price: "$9.99"
+      },
+      "admin-estandar": {
+        name: "Standard Plan (Admin)",
+        price: "$19.99"
+      },
+      "admin-premium": {
+        name: "Premium Plan (Admin)",
+        price: "$39.99"
+      }
+    };
+
+    // Get URL parameter
+    const params = new URLSearchParams(window.location.search);
+    const selectedPlan = params.get("plan");
+
+    if (selectedPlan && plans[selectedPlan]) {
+      const plan = plans[selectedPlan];
+      planNameElement.textContent = plan.name;
+      planPriceElement.textContent = plan.price;
+      totalPriceElement.textContent = plan.price;
+    } else {
+      planNameElement.textContent = "No valid plan selected.";
+      planPriceElement.textContent = "";
+      totalPriceElement.textContent = "";
+    }
   }
 });
 </script>

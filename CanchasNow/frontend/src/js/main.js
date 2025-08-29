@@ -289,12 +289,11 @@ function closeLoginModal() {
 function checkAuthStatus() {
     const currentUser = getCurrentUser();
     const loginButton = document.querySelector('button[onclick="openLoginModal()"]');
-    
     if (currentUser && loginButton) {
-        loginButton.textContent = `Welcome, ${currentUser.name}`;
+        const name = currentUser.name || currentUser.username || 'User';
+        loginButton.textContent = `Welcome, ${name}`;
         loginButton.onclick = null;
         loginButton.classList.add('cursor-default');
-        
         // Add logout functionality
         const logoutBtn = document.createElement('button');
         logoutBtn.textContent = 'Logout';

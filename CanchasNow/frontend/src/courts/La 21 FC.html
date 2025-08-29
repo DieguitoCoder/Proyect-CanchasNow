@@ -33,9 +33,7 @@
                     <a href="../views/website/index.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
                         <i class="fas fa-arrow-left mr-2"></i>Back to Courts
                     </a>
-                    <button onclick="openLoginModal()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-yellow-700 transition duration-300">
-                        Book Now
-                    </button>
+                        </script>
                 </div>
             </div>
         </div>
@@ -272,9 +270,13 @@
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             const today = new Date().toISOString().split('T')[0];
-            document.getElementById('bookingDate').min = today;
-            document.getElementById('bookingDate').value = today;
+            const bookingDateInput = document.getElementById('bookingDate');
+            bookingDateInput.min = today;
+            bookingDateInput.value = today;
             generateTimeSlots();
+            bookingDateInput.addEventListener('change', function() {
+                generateTimeSlots();
+            });
         });
 
         function updatePricing() {
@@ -336,20 +338,18 @@
             const selectedDate = new Date(document.getElementById('bookingDate').value);
             const isWeekend = selectedDate.getDay() === 0 || selectedDate.getDay() === 6;
             const matchType = document.getElementById('matchType').value;
-            
             let basePrice = isWeekend ? 50 : 35;
             if (matchType === 'tournament') basePrice += 20;
-            
             const bookingData = {
-                court: 'Golden Field',
+                court: 'La 21 Futbol Club',
                 date: document.getElementById('bookingDate').value,
                 time: selectedTime,
                 matchType: matchType,
                 price: basePrice
             };
-            
-            // Mock booking process
-            alert(`Booking confirmed for ${matchType} on ${bookingData.date} at ${bookingData.time}. Total: $${bookingData.price}`);
+            sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
+            // Redirigir a pays.html
+            window.location.href = '../views/subcriptions/pays.html';
         }
 
         function openLoginModal() {

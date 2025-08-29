@@ -241,26 +241,8 @@ function bookNow(courtId) {
         window.location.href = 'login.html';
         return;
     }
-    // User is logged in, show booking modal or scroll to booking section
-    // If quick book modal exists, use it; otherwise, redirect to court details
-    if (typeof createQuickBookModal === 'function') {
-        let modal = document.getElementById('quickBookModal');
-        if (!modal) {
-            modal = createQuickBookModal(courtId);
-            if (modal) {
-                document.body.appendChild(modal);
-            }
-        }
-        if (modal) {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        } else {
-            // fallback: redirect to court details
-            window.location.href = `../../courts/${courtId}.html`;
-        }
-    } else {
-        window.location.href = `../../courts/${courtId}.html`;
-    }
+    // User is logged in, redirigir a pays.html
+    window.location.href = '../views/subcriptions/pays.html';
 }
 
 function createQuickBookModal(courtId) {
@@ -376,7 +358,7 @@ window.processQuickBook = function (event, courtId) {
         return;
     }
 
-    // Close modal and redirect to detailed booking
+    // Close modal and redirect to payment
     closeQuickBookModal();
 
     // Store quick book data and redirect
@@ -387,7 +369,7 @@ window.processQuickBook = function (event, courtId) {
         duration
     }));
 
-    window.location.href = `courts/${courtId}.html`;
+    window.location.href = '../views/subcriptions/pays.html';
 }
 
 // Court card filtering and sorting

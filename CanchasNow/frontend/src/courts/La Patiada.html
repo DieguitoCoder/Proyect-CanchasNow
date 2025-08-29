@@ -35,10 +35,6 @@
                     <a href="../views/website/index.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
                         <i class="fas fa-arrow-left mr-2"></i>Back to Courts
                     </a>
-                    <button onclick="openLoginModal()"
-                        class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition duration-300">
-                        Book Now
-                    </button>
                 </div>
             </div>
         </div>
@@ -298,9 +294,13 @@
         // Initialize page
         document.addEventListener('DOMContentLoaded', function () {
             const today = new Date().toISOString().split('T')[0];
-            document.getElementById('bookingDate').min = today;
-            document.getElementById('bookingDate').value = today;
+            const bookingDateInput = document.getElementById('bookingDate');
+            bookingDateInput.min = today;
+            bookingDateInput.value = today;
             generateTimeSlots();
+            bookingDateInput.addEventListener('change', function() {
+                generateTimeSlots();
+            });
         });
 
         function updatePricing() {
@@ -369,8 +369,11 @@
                 price: price
             };
 
-            // Mock booking process
-            alert(`Booking confirmed for ${sport} on ${bookingData.date} at ${bookingData.time}. Total: $${bookingData.price}`);
+            // Guardar datos en sessionStorage
+            sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
+
+            // Redirigir a pays.html
+            window.location.href = '../views/subcriptions/pays.html';
         }
 
         function openLoginModal() {
