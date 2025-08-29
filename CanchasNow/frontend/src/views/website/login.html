@@ -53,7 +53,7 @@
 
         <div class="mt-6 text-center">
             <p class="text-gray-600">Don't have an account?
-                <a href="#" class="text-blue-600 hover:underline font-semibold">Sign up here</a>
+                <a href="sign-up.html" class="text-blue-600 hover:underline font-semibold">Sign up here</a>
             </p>
         </div>
 
@@ -64,22 +64,27 @@
         </div>
     </div>
 
-    <script src="../../../../frontend/src/js/auth.js"></script>
     <script>
         async function handleLogin(event) {
             event.preventDefault();
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             try {
-                const { login } = await import('../../../../frontend/src/auth.js');
-                const user = await login(email, password);
-                if (user.role === 'admin') {
-                    window.location.href = 'admin.html';
-                } else {
+                const response = await fetch('http://localhost:3000/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    // Puedes guardar el usuario en localStorage si lo necesitas
+                    localStorage.setItem('currentUser', JSON.stringify(data.user));
                     window.location.href = 'index.html';
+                } else {
+                    alert(data.message || 'Invalid credentials. Please try again.');
                 }
             } catch (err) {
-                alert('Credenciales inválidas o error de conexión.');
+                alert('Error de conexión con el servidor');
             }
         }
     </script>

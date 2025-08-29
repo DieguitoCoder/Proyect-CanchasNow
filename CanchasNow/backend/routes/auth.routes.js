@@ -6,20 +6,23 @@ const router = Router();
 
 // Registro de usuario
 router.post("/register", async (req, res) => {
-    const { username, email, password } = req.body;
-    if (!username || !email || !password) {
+    const { name, email, password, phone } = req.body;
+    if (!name || !email || !password || !phone) {
         return res.status(400).json({ message: "Todos los campos son requeridos" });
     }
     try {
         // Verificar si el usuario ya existe
-        const [rows] = await pool.query("SELECT id FROM users WHERE email = ?", [email]);
+        const [rows] = await pool.query("SELECT user_id FROM users WHERE email = ?", [email]);
         if (rows.length > 0) {
             return res.status(409).json({ message: "El usuario ya existe" });
         }
         // Encriptar contraseña
         const hashedPassword = await bcrypt.hash(password, 10);
         // Insertar usuario
-        await pool.query("INSERT INTO users (username, email, password) VALUES (?, ?, ?)", [username, email, hashedPassword]);
+        await pool.query(
+            "INSERT INTO users (username, email, password, full_name, phone, role) VALUES (?, ?, ?, ?, ?, ?)",
+            [name, email, hashedPassword, name, phone, 'user']
+        );
         res.status(201).json({ message: "Usuario registrado exitosamente" });
     } catch (error) {
         res.status(500).json({ message: "Error en el servidor", error });

@@ -17,10 +17,19 @@ const app = express();
 app.use(express.json());
 app.use(
     cors({
-        origin: process.env.CLIENT_ORIGIN?.split(",") || "*",
+        origin: '*', // Permitir cualquier origen para desarrollo
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization'],
         credentials: false,
     })
 );
+// Servir archivos estáticos para assets y js en desarrollo
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use('/assets', express.static(path.join(__dirname, '../frontend/src/assets')));
+app.use('/js', express.static(path.join(__dirname, '../frontend/src/js')));
 
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 

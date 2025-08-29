@@ -2,6 +2,15 @@
 
 // Mock user database
 const mockUsers = [
+    // Ejemplo de usuario OwnerCanchas (solo creado manualmente por admin)
+    {
+        id: 100,
+        email: 'ownercanchas@canchasya.com',
+        password: 'owner123',
+        name: 'Dueño Canchas',
+        role: 'ownercanchas',
+        courtId: null
+    },
     {
         id: 1,
         email: 'admin@ladelpibe.com',
@@ -209,7 +218,7 @@ function registerUser(userData) {
         password,
         name,
         phone,
-        role: 'user',
+        role: 'user', // Solo puede ser user desde el front
         courtId: null,
         registrationDate: new Date().toISOString()
     };

@@ -102,9 +102,9 @@ function createCourtCard(court) {
                         class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300 text-sm font-semibold">
                     View Details
                 </button>
-                <button onclick="quickBook('${court.id}')" 
+                <button onclick="bookNow('${court.id}')" 
                         class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300 text-sm font-semibold">
-                    Quick Book
+                    Book Now
                 </button>
             </div>
         </div>
@@ -233,8 +233,34 @@ function viewCourtDetails(courtId) {
     window.location.href = `../../courts/${courtId}.html`;
 }
 
-function quickBook(courtId) {
-    window.location.href = 'login.html';
+
+function bookNow(courtId) {
+    const currentUser = window.getCurrentUser ? getCurrentUser() : null;
+    if (!currentUser) {
+        // Not logged in, redirect to login
+        window.location.href = 'login.html';
+        return;
+    }
+    // User is logged in, show booking modal or scroll to booking section
+    // If quick book modal exists, use it; otherwise, redirect to court details
+    if (typeof createQuickBookModal === 'function') {
+        let modal = document.getElementById('quickBookModal');
+        if (!modal) {
+            modal = createQuickBookModal(courtId);
+            if (modal) {
+                document.body.appendChild(modal);
+            }
+        }
+        if (modal) {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        } else {
+            // fallback: redirect to court details
+            window.location.href = `../../courts/${courtId}.html`;
+        }
+    } else {
+        window.location.href = `../../courts/${courtId}.html`;
+    }
 }
 
 function createQuickBookModal(courtId) {
@@ -496,7 +522,7 @@ window.courtCardUtils = {
     createCourtCard,
     toggleFavorite,
     viewCourtDetails,
-    quickBook,
+    bookNow,
     filterCourtCards,
     sortCourtCards
 };
