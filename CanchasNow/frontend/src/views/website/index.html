@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="icon" href="../../assets/icons/deportes-con-balones.png">
     <link href="../../css/styles.css" rel="stylesheet">
 </head>
+
 <body class="bg-gray-50">
     <!-- Navigation Header -->
     <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
@@ -25,15 +27,16 @@
                     <a href="#contact" class="text-gray-700 hover:text-blue-600 transition duration-300">Contact</a>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <button onclick="openLoginModal()" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                    <button onclick="openLoginModal()"
+                        class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
                         Login
                     </button>
                     <script>
                         // Redirigir el botón Login de la barra superior a login.html
-                        document.addEventListener('DOMContentLoaded', function() {
+                        document.addEventListener('DOMContentLoaded', function () {
                             var loginBtn = document.querySelector('button.bg-blue-600.text-white.px-6.py-2.rounded-lg');
                             if (loginBtn) {
-                                loginBtn.onclick = function() {
+                                loginBtn.onclick = function () {
                                     window.location.href = 'login.html';
                                 };
                             }
@@ -58,7 +61,8 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="pt-16 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white min-h-screen flex items-center">
+    <section id="home"
+        class="pt-16 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 text-white min-h-screen flex items-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8">
@@ -68,22 +72,24 @@
                         in Barranquilla
                     </h1>
                     <p class="text-xl text-blue-100 leading-relaxed">
-                        Discover and reserve the best sports facilities in the city. From football to tennis, 
+                        Discover and reserve the best sports facilities in the city. From football to tennis,
                         find your perfect court with real-time availability and instant booking.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <button onclick="scrollToSection('courts')" class="bg-yellow-400 text-blue-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-300 transition duration-300 transform hover:scale-105">
+                        <button onclick="scrollToSection('courts')"
+                            class="bg-yellow-400 text-blue-900 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-yellow-300 transition duration-300 transform hover:scale-105">
                             Explore Courts
                         </button>
-                        <button onclick="openLoginModal()" class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
+                        <button onclick="openLoginModal()"
+                            class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition duration-300">
                             Start Booking
                         </button>
                         <script>
                             // Redirigir el botón Start Booking a login.html
-                            document.addEventListener('DOMContentLoaded', function() {
+                            document.addEventListener('DOMContentLoaded', function () {
                                 var startBookingBtn = document.querySelector('button.border-2.border-white.text-white.px-8.py-4.rounded-lg.text-lg.font-semibold');
                                 if (startBookingBtn) {
-                                    startBookingBtn.onclick = function() {
+                                    startBookingBtn.onclick = function () {
                                         window.location.href = 'login.html';
                                     };
                                 }
@@ -101,11 +107,11 @@
                             </div>
                             <div class="text-center">
                                 <div class="text-3xl font-bold text-yellow-400">24/7</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Featured Courts Section -->
@@ -118,7 +124,7 @@
                     Each court offers unique amenities and professional-grade equipment.
                 </p>
             </div>
-            
+
             <div id="courts-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Courts will be dynamically loaded here -->
             </div>
@@ -132,7 +138,7 @@
                 <h2 class="text-4xl font-bold text-gray-900 mb-4">Why Choose CanchasYa?</h2>
                 <p class="text-xl text-gray-600">Experience the future of sports court reservations</p>
             </div>
-            
+
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300">
                     <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -141,7 +147,7 @@
                     <h3 class="text-xl font-semibold mb-2">Real-time Booking</h3>
                     <p class="text-gray-600">See availability and book instantly with our live scheduling system.</p>
                 </div>
-                
+
                 <div class="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300">
                     <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-shield-alt text-green-600 text-2xl"></i>
@@ -149,7 +155,7 @@
                     <h3 class="text-xl font-semibold mb-2">Secure Payments</h3>
                     <p class="text-gray-600">Multiple payment options including Nequi, Visa, and MasterCard.</p>
                 </div>
-                
+
                 <div class="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300">
                     <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-star text-yellow-600 text-2xl"></i>
@@ -157,7 +163,7 @@
                     <h3 class="text-xl font-semibold mb-2">Premium Quality</h3>
                     <p class="text-gray-600">Only the best-maintained courts with professional equipment.</p>
                 </div>
-                
+
                 <div class="text-center p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition duration-300">
                     <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                         <i class="fas fa-headset text-purple-600 text-2xl"></i>
@@ -205,9 +211,49 @@
                         <p><i class="fas fa-envelope mr-2"></i> info@canchasya.com</p>
                         <p><i class="fas fa-map-marker-alt mr-2"></i> Barranquilla, Colombia</p>
                     </div>
+                    <form id="whatsapp-support-form" class="mt-4">
+                        <label for="supportMessage" class="block text-sm mb-1">Send us a message (WhatsApp):</label>
+                        <textarea id="supportMessage" class="w-full p-2 rounded text-gray-900" rows="2"
+                            placeholder="Type your message here..." required></textarea>
+                        <button type="submit"
+                            class="mt-2 w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded">Send to
+                            WhatsApp</button>
+                        <p class="text-xs text-gray-400 mt-1">Your message will be sent to our WhatsApp: <span
+                                class="font-semibold">314 8390443</span></p>
+                    </form>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <!-- FAQ Section -->
+                <div id="faq" class="mt-12 bg-gray-800 rounded-lg p-6">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Frequently Asked Questions & Complaints</h3>
+                    <ul class="space-y-3">
+                        <li class="bg-gray-900 rounded p-3">
+                            <strong>Lost my phone at the court, can I check the security cameras?</strong>
+                            <p class="text-gray-300 text-sm">Please contact support via WhatsApp and provide details.
+                                We'll assist you with the process.</p>
+                        </li>
+                        <li class="bg-gray-900 rounded p-3">
+                            <strong>I can't attend my reservation, can I get a refund?</strong>
+                            <p class="text-gray-300 text-sm">Refunds depend on our policy. Please send your request
+                                through the support form or WhatsApp for personalized assistance.</p>
+                        </li>
+                        <li class="bg-gray-900 rounded p-3">
+                            <strong>How can I make a complaint or claim?</strong>
+                            <p class="text-gray-300 text-sm">Use the chat box above to send your complaint directly to
+                                our WhatsApp, or contact us for urgent matters.</p>
+                        </li>
+                    </ul>
+                    <div class="mt-4">
+                        <label for="faqMessage" class="block text-sm mb-1 text-gray-200">Send a complaint or
+                            question:</label>
+                        <textarea id="faqMessage" class="w-full p-2 rounded text-gray-900" rows="2"
+                            placeholder="Write your complaint or question..." required></textarea>
+                        <button id="faqSendBtn"
+                            class="mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded">Send to
+                            WhatsApp</button>
+                    </div>
+                </div>
                 <p>&copy; 2025 CanchasYa. All rights reserved.</p>
             </div>
         </div>
@@ -225,18 +271,22 @@
             <form onsubmit="handleLogin(event)">
                 <div class="mb-4">
                     <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-                    <input type="email" id="loginEmail" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                    <input type="email" id="loginEmail" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
                 </div>
                 <div class="mb-6">
                     <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-                    <input type="password" id="loginPassword" required class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                    <input type="password" id="loginPassword" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
                 </div>
-                <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                <button type="submit"
+                    class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
                     Login
                 </button>
             </form>
             <div class="mt-4 text-center">
-                <p class="text-gray-600">Don't have an account? <a href="#" class="text-blue-600 hover:underline">Sign up</a></p>
+                <p class="text-gray-600">Don't have an account? <a href="#" class="text-blue-600 hover:underline">Sign
+                        up</a></p>
             </div>
         </div>
     </div>
@@ -249,5 +299,26 @@
     <script src="../../js/components/court-card.js"></script>
     <script src="../../js/auth.js"></script>
     <script src="../../js/main.js"></script>
+    <script>
+        // WhatsApp Support Form
+        document.getElementById('whatsapp-support-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var msg = document.getElementById('supportMessage').value.trim();
+            if (!msg) return;
+            var phone = '573148390443';
+            var url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        });
+
+        // FAQ Complaint/Question to WhatsApp
+        document.getElementById('faqSendBtn').addEventListener('click', function () {
+            var msg = document.getElementById('faqMessage').value.trim();
+            if (!msg) return;
+            var phone = '573148390443';
+            var url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        });
+    </script>
 </body>
+
 </html>
