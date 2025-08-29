@@ -102,7 +102,7 @@ function createCourtCard(court) {
                         class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300 text-sm font-semibold">
                     View Details
                 </button>
-                <button onclick="bookNow('${court.id}')" 
+                <button id="book-now-btn-${court.id}" onclick="bookNow('${court.id}')" 
                         class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300 text-sm font-semibold">
                     Book Now
                 </button>
@@ -241,8 +241,17 @@ function bookNow(courtId) {
         window.location.href = 'login.html';
         return;
     }
-    // User is logged in, redirigir a pays.html
-    window.location.href = '../views/subcriptions/pays.html';
+    // Mostrar modal simplificado de reserva
+    openQuickBookModal(courtId);
+// Ocultar botón Book Now si el usuario es tipo 'user'
+document.addEventListener('DOMContentLoaded', function () {
+    const userType = localStorage.getItem('userType');
+    if (userType === 'user') {
+        document.querySelectorAll('button[id^="book-now-btn-"]').forEach(btn => {
+            btn.style.display = 'none';
+        });
+    }
+});
 }
 
 function createQuickBookModal(courtId) {

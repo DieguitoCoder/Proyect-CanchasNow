@@ -46,7 +46,16 @@ router.post("/login", async (req, res) => {
             return res.status(401).json({ message: "Usuario o contraseña incorrectos" });
         }
         // Aquí podrías generar un token JWT si lo necesitas
-        res.status(200).json({ message: "Login exitoso", user: { id: user.id, username: user.username, email: user.email } });
+        res.status(200).json({ 
+            message: "Login exitoso", 
+            user: { 
+                id: user.id, 
+                username: user.username, 
+                email: user.email, 
+                role: user.role,
+                owner_id: user.owner_id
+            } 
+        });
     } catch (error) {
         res.status(500).json({ message: "Error en el servidor", error });
     }

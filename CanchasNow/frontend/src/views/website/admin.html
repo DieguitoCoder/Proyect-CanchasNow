@@ -1,228 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - CanchasYa</title>
+    <title>Admin Court Management Panel - CanchasNow</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-
 <body class="bg-gray-50">
     <!-- Navigation -->
     <nav class="bg-white shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <img src="../../../../frontend/src/assets/icons/logo.svg" alt="CanchasYa" class="h-10 w-auto">
-                    <span class="ml-3 text-2xl font-bold text-blue-600">CanchasYa Admin</span>
+                    <img src="../../../../frontend/src/assets/icons/logo.svg" alt="CanchasNow" class="h-10 w-auto">
+                    <span class="ml-3 text-2xl font-bold text-blue-600">CanchasNow Admin</span>
                 </div>
                 <div class="flex items-center space-x-4">
                     <span class="text-gray-700">Welcome, <span id="adminName">Admin</span></span>
-                    <button onclick="logout()"
-                        class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300">
-                        Logout
-                    </button>
+                    <button onclick="logout()" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300">Logout</button>
                 </div>
             </div>
         </div>
     </nav>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <!-- Dashboard Header -->
-        <div class="mb-8">
-            <h1 class="text-3xl font-bold text-gray-900 mb-2">Court Management Dashboard</h1>
-            <p class="text-gray-600">Manage your court information, pricing, and availability</p>
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <div class="mb-8 text-center">
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">Court Management Panel</h1>
+            <p class="text-gray-600">Manage all your court information, prices, schedules, and status in one place.</p>
         </div>
 
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="bg-white rounded-lg shadow p-6">
-                <div class="flex items-center">
-                    <div class="p-3 rounded-full bg-blue-100">
-                        <i class="fas fa-calendar-check text-blue-600 text-xl"></i>
+        <div class="bg-white rounded-2xl shadow-lg p-10 mb-10">
+            <form id="courtAdminForm" class="space-y-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Court Name</label>
+                        <input type="text" id="courtName" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500" required>
                     </div>
-                    <div class="ml-4">
-                        <h3 class="text-lg font-semibold text-gray-700">Today's Bookings</h3>
-                        <p class="text-2xl font-bold text-blue-600" id="todayBookings">12</p>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Sport Type</label>
+                        <select id="sportType" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500" required>
+                            <option value="football">Football</option>
+                            <option value="tennis">Tennis</option>
+                            <option value="basketball">Basketball</option>
+                            <option value="volleyball">Volleyball</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Description</label>
+                        <textarea id="courtDescription" rows="3" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500" required></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Address</label>
+                        <input type="text" id="courtAddress" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Phone</label>
+                        <input type="tel" id="courtPhone" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500" required>
                     </div>
                 </div>
-            </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Weekday Price/Hour</label>
+                        <input type="number" id="weekdayPrice" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Weekend Price/Hour</label>
+                        <input type="number" id="weekendPrice" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Currency</label>
+                        <select id="currency" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500" required>
+                            <option value="USD">USD ($)</option>
+                            <option value="COP">COP ($)</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Opening Time</label>
+                        <input type="time" id="openingTime" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500" required>
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 text-sm font-bold mb-2">Closing Time</label>
+                        <input type="time" id="closingTime" class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:border-blue-500" required>
+                    </div>
+                </div>
+                <div class="mt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <div class="flex items-center space-x-4">
+                        <span id="courtStatus" class="px-5 py-2 rounded-xl font-semibold text-white bg-green-600">Open</span>
+                        <button type="button" id="toggleCourtStatus" class="bg-yellow-500 text-white px-6 py-2 rounded-xl hover:bg-yellow-600 transition duration-300">Toggle Status</button>
+                    </div>
+                    <button type="submit" id="saveCourtBtn" class="bg-blue-600 text-white px-8 py-3 rounded-xl hover:bg-blue-700 transition duration-300 font-bold">Save Changes</button>
+                </div>
+            </form>
+        </div>
 
-            <div class="bg-white rounded-lg shadow p-6">
-                <div class="flex items-center">
-                    <div class="p-3 rounded-full bg-green-100">
-                        <i class="fas fa-dollar-sign text-green-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <h3 class="text-lg font-semibold text-gray-700">Revenue</h3>
-                        <p class="text-2xl font-bold text-green-600" id="revenue">$2,450</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow p-6">
-                <div class="flex items-center">
-                    <div class="p-3 rounded-full bg-yellow-100">
-                        <i class="fas fa-clock text-yellow-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <h3 class="text-lg font-semibold text-gray-700">Available Hours</h3>
-                        <p class="text-2xl font-bold text-yellow-600" id="availableHours">8</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="bg-white rounded-lg shadow p-6">
-                <div class="flex items-center">
-                    <div class="p-3 rounded-full bg-purple-100">
-                        <i class="fas fa-star text-purple-600 text-xl"></i>
-                    </div>
-                    <div class="ml-4">
-                        <h3 class="text-lg font-semibold text-gray-700">Rating</h3>
-                        <p class="text-2xl font-bold text-purple-600" id="rating">4.8</p>
-                    </div>
-                </div>
+        <div class="bg-white rounded-lg shadow p-8 mb-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-6">Quick Actions</h2>
+            <div class="space-y-3">
+                <button onclick="viewBookings()" class="w-full bg-yellow-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition duration-300">View All Bookings</button>
+                <button onclick="manageGallery()" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300">Manage Gallery</button>
+                <button onclick="generateReport()" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition duration-300">Generate Report</button>
             </div>
         </div>
 
-        <!-- Main Content Area -->
-        <div class="grid lg:grid-cols-3 gap-8">
-            <!-- Court Information Form -->
-            <div class="lg:col-span-2">
-                <div class="bg-white rounded-lg shadow p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-xl font-bold text-gray-900">Court Information</h2>
-                        <button onclick="saveCourtInfo()"
-                            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
-                            Save Changes
-                        </button>
-                    </div>
-
-                    <form id="courtForm">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Court Name</label>
-                                <input type="text" id="courtName" value="La del Pibe"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-                            </div>
-
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Sport Type</label>
-                                <select id="sportType"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-                                    <option value="football">Football</option>
-                                    <option value="tennis">Tennis</option>
-                                    <option value="basketball">Basketball</option>
-                                    <option value="volleyball">Volleyball</option>
-                                </select>
-                            </div>
-
-                            <div class="md:col-span-2">
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Description</label>
-                                <textarea id="courtDescription" rows="4"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">Professional football court with artificial grass and modern facilities. Perfect for both casual games and competitive matches.</textarea>
-                            </div>
-
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Address</label>
-                                <input type="text" id="courtAddress" value="Calle 45 #23-67, Barranquilla"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-                            </div>
-
-                            <div>
-                                <label class="block text-gray-700 text-sm font-bold mb-2">Phone</label>
-                                <input type="tel" id="courtPhone" value="+57 300 123 4567"
-                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Pricing Management -->
-                <div class="bg-white rounded-lg shadow p-6 mt-6">
-                    <h2 class="text-xl font-bold text-gray-900 mb-6">Pricing & Schedule</h2>
-
-                    <div class="grid md:grid-cols-3 gap-6 mb-6">
-                        <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2">Weekday Price/Hour</label>
-                            <input type="number" id="weekdayPrice" value="25"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-                        </div>
-
-                        <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2">Weekend Price/Hour</label>
-                            <input type="number" id="weekendPrice" value="35"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-                        </div>
-
-                        <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2">Currency</label>
-                            <select id="currency"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-                                <option value="USD">USD ($)</option>
-                                <option value="COP">COP ($)</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2">Opening Time</label>
-                            <input type="time" id="openingTime" value="06:00"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-                        </div>
-
-                        <div>
-                            <label class="block text-gray-700 text-sm font-bold mb-2">Closing Time</label>
-                            <input type="time" id="closingTime" value="22:00"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quick Actions & Recent Bookings -->
-            <div class="space-y-6">
-                <!-- Quick Actions -->
-                <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
-                    <div class="space-y-3">
-                        <button onclick="viewCourtPage()"
-                            class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
-                            View Court Page
-                        </button>
-                        <button onclick="manageGallery()"
-                            class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition duration-300">
-                            Manage Gallery
-                        </button>
-                        <button onclick="viewBookings()"
-                            class="w-full bg-yellow-600 text-white py-2 rounded-lg hover:bg-yellow-700 transition duration-300">
-                            View All Bookings
-                        </button>
-                        <button onclick="generateReport()"
-                            class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition duration-300">
-                            Generate Report
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Recent Bookings -->
-                <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-semibold text-gray-900 mb-4">Recent Bookings</h3>
-                    <div id="recentBookings" class="space-y-3">
-                        <!-- Bookings will be loaded here -->
-                    </div>
-                </div>
+        <div class="bg-white rounded-lg shadow p-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-6">Recent Bookings</h2>
+            <div id="recentBookings" class="space-y-3">
+                <!-- Bookings will be loaded here by JS -->
             </div>
         </div>
     </div>
 
-    <script src="../../../../frontend/data/courts.js"></script>
-    <script src="../../../../frontend/data/bookings.js"></script>
-    <script src="../../../../frontend/src/js/auth.js"></script>
     <script src="../../../../frontend/src/js/admin.js"></script>
 </body>
-
 </html>

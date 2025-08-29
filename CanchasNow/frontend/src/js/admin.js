@@ -6,17 +6,80 @@ let currentCourtData = null;
 // Initialize admin dashboard
 function initializeAdminDashboard() {
     currentAdminUser = getCurrentUser();
-    
     if (!currentAdminUser || currentAdminUser.role !== 'admin') {
         window.location.href = 'login.html';
         return;
     }
-    
+    setupAdminName();
     loadCourtData();
     setupAdminHandlers();
     updateDashboardStats();
     loadRecentBookings();
-    setupAdminName();
+
+    // Botón logout
+    const logoutBtn = document.querySelector('button[onclick="logout()"]');
+    if (logoutBtn) {
+        logoutBtn.onclick = function() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        };
+    }
+
+    // Botón Save Changes
+    const saveBtn = document.getElementById('saveCourtBtn');
+    if (saveBtn) {
+        saveBtn.onclick = function(e) {
+            e.preventDefault();
+            saveCourtInfo();
+        };
+    }
+
+    // Botón Toggle Status
+    const toggleStatusBtn = document.getElementById('toggleCourtStatus');
+    if (toggleStatusBtn) {
+        toggleStatusBtn.onclick = function() {
+            toggleCourtStatus();
+        };
+    }
+
+    // Botón View All Bookings
+    const viewBookingsBtn = document.querySelector('button[onclick="viewBookings()"]');
+    if (viewBookingsBtn) {
+        viewBookingsBtn.onclick = function() {
+            window.location.href = 'owner-admin.html'; // Redirige a la vista de reservas del dueño
+        };
+    }
+
+    // Botón Manage Gallery
+    const manageGalleryBtn = document.querySelector('button[onclick="manageGallery()"]');
+    if (manageGalleryBtn) {
+        manageGalleryBtn.onclick = function() {
+            window.location.href = 'gallery.html'; // Redirige a la gestión de galería
+        };
+    }
+
+    // Botón Generate Report
+    const generateReportBtn = document.querySelector('button[onclick="generateReport()"]');
+    if (generateReportBtn) {
+        generateReportBtn.onclick = function() {
+            window.location.href = 'report.html'; // Redirige a la vista de reportes
+        };
+    }
+}
+// Alternar estado de la cancha (Open/Closed)
+function toggleCourtStatus() {
+    const statusSpan = document.getElementById('courtStatus');
+    if (!statusSpan) return;
+    if (statusSpan.textContent === 'Open') {
+        statusSpan.textContent = 'Closed';
+        statusSpan.classList.remove('bg-green-600');
+        statusSpan.classList.add('bg-red-600');
+    } else {
+        statusSpan.textContent = 'Open';
+        statusSpan.classList.remove('bg-red-600');
+        statusSpan.classList.add('bg-green-600');
+    }
+    // Aquí podrías hacer una petición al backend para guardar el estado
 }
 
 function setupAdminName() {

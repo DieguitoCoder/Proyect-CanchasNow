@@ -77,9 +77,12 @@
                 });
                 const data = await response.json();
                 if (response.ok) {
-                    // Puedes guardar el usuario en localStorage si lo necesitas
                     localStorage.setItem('currentUser', JSON.stringify(data.user));
-                    window.location.href = 'index.html';
+                    if (data.user.role === 'admin') {
+                        window.location.href = 'admin.html';
+                    } else {
+                        window.location.href = 'index.html';
+                    }
                 } else {
                     alert(data.message || 'Invalid credentials. Please try again.');
                 }
