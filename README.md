@@ -49,11 +49,9 @@ It provides:
 
 ## 🛠️ Technologies  
 
-- **Frontend:** HTML, CSS (Tailwind + custom), Vanilla JavaScript  
+- **Frontend:** HTML, CSS (Tailwind)  
 - **Backend:** Node.js, Express  
-- **Database:** MySQL (via MySQL Workbench)  
-- **Authentication:** JWT  
-- **Other tools:** Postman (for API testing), LocalStorage/SessionStorage for sessions  
+- **Database:** MySQL (via MySQL Workbench)
 
 ---
 
@@ -100,7 +98,7 @@ CanchasNow/
 ├── backend/
 │   ├── db.js              # Database connection (MySQL)
 │   ├── server.js          # Entry point for backend
-│   ├── routes/            # API routes
+│   ├── routes/            # Routes
 │   ├── middleware/        # Auth & other middlewares
 │   ├── sql/               # SQL scripts (schema, inserts, etc.)
 │   └── package.json
