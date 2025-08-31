@@ -8,6 +8,15 @@ function initializeBookingSystem() {
     loadAvailableSlots();
 }
 
+// Add missing setupTimeSlots and setupPricingCalculator as no-ops
+function setupTimeSlots() {
+    // No-op: implement if needed
+}
+
+function setupPricingCalculator() {
+    // No-op: implement if needed
+}
+
 function setupBookingForm() {
     const bookingForms = document.querySelectorAll('form[onsubmit*="handleBooking"]');
     

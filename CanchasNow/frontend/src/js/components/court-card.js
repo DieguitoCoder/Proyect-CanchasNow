@@ -106,6 +106,12 @@ function createCourtCard(court) {
                         class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300 text-sm font-semibold">
                     Book Now
                 </button>
+                ${window.isAdmin && window.isAdmin() ? `
+                <button id="edit-court-btn-${court.id}" onclick="openEditCourtModal('${court.id}')" 
+                        class="bg-yellow-500 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition duration-300 text-sm font-semibold">
+                    Edit Court
+                </button>
+                ` : ''}
             </div>
         </div>
     `;

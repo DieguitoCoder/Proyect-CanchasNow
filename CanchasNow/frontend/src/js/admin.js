@@ -90,18 +90,22 @@ function setupAdminName() {
 }
 
 function loadCourtData() {
-    if (!currentAdminUser.courtId) {
+    // Permitir edición de cualquier cancha si hay editCourtId en sessionStorage (botón Edit Court)
+    let editCourtId = sessionStorage.getItem('editCourtId');
+    if (editCourtId) {
+        currentCourtData = courts.find(court => court.id === editCourtId);
+        // Limpiar el id para evitar confusiones en futuras ediciones
+        sessionStorage.removeItem('editCourtId');
+    } else if (currentAdminUser.courtId) {
+        currentCourtData = courts.find(court => court.id === currentAdminUser.courtId);
+    } else {
         showNotification('No court assigned to this admin account', 'error');
         return;
     }
-    
-    currentCourtData = courts.find(court => court.id === currentAdminUser.courtId);
-    
     if (!currentCourtData) {
         showNotification('Court data not found', 'error');
         return;
     }
-    
     populateCourtForm();
 }
 
@@ -179,23 +183,74 @@ function setupQuickActions() {
     };
 }
 
-function saveCourtInfo() {
+import { request } from "../api.js";
+
+async function saveCourtInfo() {
     if (!currentCourtData) return;
-    
     const formData = collectFormData();
-    
     if (!validateCourtData(formData)) {
         return;
     }
-    
-    // Update court data
-    updateCourtData(formData);
-    
-    // Show success message
-    showNotification('Court information updated successfully', 'success');
-    
-    // Update dashboard stats
-    updateDashboardStats();
+
+    // Guardar los valores originales para comparar
+    const original = {
+        name: currentCourtData.name,
+        sport: currentCourtData.sport,
+        description: currentCourtData.description,
+        address: currentCourtData.address,
+        phone: currentCourtData.phone,
+        weekday: currentCourtData.pricing?.weekday,
+        weekend: currentCourtData.pricing?.weekend,
+        open: currentCourtData.hours?.open,
+        close: currentCourtData.hours?.close
+    };
+
+    // Actualizar en backend
+    try {
+        // Mapear los datos al formato esperado por el backend
+        const payload = {
+            name: formData.name,
+            description: formData.description,
+            address: formData.address,
+            price_per_hour: formData.pricing.weekday, // O ajustar según lógica de precios
+            image_url: currentCourtData.images?.banner || "",
+            type_id: 1 // Ajustar si tienes tipos dinámicos
+        };
+        await request(`/fields/${currentCourtData.id}`, {
+            method: "PUT",
+            body: JSON.stringify(payload)
+        });
+        // Actualizar localmente
+        updateCourtData(formData);
+        showNotification('Court information updated successfully', 'success');
+        updateDashboardStats();
+
+        // Resaltar campos modificados
+        const highlight = (id) => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.add('ring-2', 'ring-yellow-400');
+                setTimeout(() => {
+                    el.classList.remove('ring-2', 'ring-yellow-400');
+                }, 3000);
+            }
+        };
+        if (formData.name !== original.name) highlight('courtName');
+        if (formData.sport !== original.sport) highlight('sportType');
+        if (formData.description !== original.description) highlight('courtDescription');
+        if (formData.address !== original.address) highlight('courtAddress');
+        if (formData.phone !== original.phone) highlight('courtPhone');
+        if (formData.pricing.weekday !== original.weekday) highlight('weekdayPrice');
+        if (formData.pricing.weekend !== original.weekend) highlight('weekendPrice');
+        if (formData.hours.open !== original.open) highlight('openingTime');
+        if (formData.hours.close !== original.close) highlight('closingTime');
+        // Redirigir a index.html tras guardar cambios
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 1200);
+    } catch (err) {
+        showNotification('Error updating court: ' + err.message, 'error');
+    }
 }
 
 function collectFormData() {

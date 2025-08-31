@@ -1,3 +1,46 @@
+<script>
+function isAdmin() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    return user && user.role === 'admin';
+}
+
+let courtData = JSON.parse(localStorage.getItem('courtData_LaPatiada')) || {
+    name: 'La Patiada',
+    description: `Premium football experience in Barranquilla. Enjoy a top-quality pitch, professional lighting, and a vibrant community.`,
+    banner: '../assets/courts/La Patiada/Banner.png',
+    gallery: [
+        '../assets/courts/La Patiada/Gallery-1.png',
+        '../assets/courts/La Patiada/Gallery-2.jpg'
+    ]
+};
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateCourtView();
+});
+
+function updateCourtView() {
+    const bannerImg = document.querySelector('section .relative img');
+    if (bannerImg) bannerImg.src = courtData.banner;
+    const galleryDiv = document.getElementById('galleryGrid');
+    if (galleryDiv) {
+        galleryDiv.innerHTML = '';
+        courtData.gallery.forEach(url => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.className = 'rounded-lg shadow-md hover:shadow-lg transition duration-300 object-cover w-full h-64';
+            galleryDiv.appendChild(img);
+        });
+    }
+    const h1 = document.querySelector('h1.text-5xl');
+    if (h1) h1.textContent = courtData.name;
+    const h2 = document.querySelector('h2.text-3xl');
+    if (h2) h2.textContent = 'About ' + courtData.name;
+    const pTitle = document.querySelector('p.text-xl.mb-6');
+    if (pTitle) pTitle.textContent = 'Premium Football Experience in Barranquilla';
+    const pDesc = document.querySelector('p.text-gray-600.text-lg.leading-relaxed.mb-6');
+    if (pDesc) pDesc.textContent = courtData.description;
+}
+</script>
 <!DOCTYPE html>
 <html lang="en">
 

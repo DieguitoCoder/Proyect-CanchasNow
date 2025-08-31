@@ -1,3 +1,52 @@
+<script>
+// Utilidad para saber si es admin (mock, reemplazar por tu lógica real)
+function isAdmin() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    return user && user.role === 'admin';
+}
+
+// Cargar datos de localStorage si existen, si no usar mock
+let courtData = JSON.parse(localStorage.getItem('courtData_La21FC')) || {
+    name: 'La 21 Futbol Club',
+    description: `A modern and welcoming indoor football facility in Barranquilla, La 21 Fútbol Club offers high-quality 6-a-side football courts for all levels. Enjoy professional lighting, comfortable changing rooms, and a vibrant football community.`,
+    banner: '../assets/courts/La 21 FC/Banner.png',
+    gallery: [
+        '../assets/courts/La 21 FC/Gallery-1.png',
+        '../assets/courts/La 21 FC/Gallery-2.png'
+    ]
+};
+
+// Al cargar la página, actualiza el HTML con los datos editados
+document.addEventListener('DOMContentLoaded', function() {
+    updateCourtView();
+});
+
+function updateCourtView() {
+    // Actualiza el banner
+    const bannerImg = document.querySelector('section .relative img');
+    if (bannerImg) bannerImg.src = courtData.banner;
+    // Actualiza la galería
+    const galleryDiv = document.getElementById('galleryGrid');
+    if (galleryDiv) {
+        galleryDiv.innerHTML = '';
+        courtData.gallery.forEach(url => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.className = 'rounded-lg shadow-md hover:shadow-lg transition duration-300 object-cover w-full h-64';
+            galleryDiv.appendChild(img);
+        });
+    }
+    // Actualiza nombre y descripción
+    const h1 = document.querySelector('h1.text-5xl');
+    if (h1) h1.textContent = courtData.name;
+    const h2 = document.querySelector('h2.text-3xl');
+    if (h2) h2.textContent = 'About ' + courtData.name;
+    const pTitle = document.querySelector('p.text-xl.mb-6');
+    if (pTitle) pTitle.textContent = 'Premium Soccer Experience in Barranquilla';
+    const pDesc = document.querySelector('p.text-gray-600.text-lg.leading-relaxed.mb-6');
+    if (pDesc) pDesc.textContent = courtData.description;
+}
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,10 +1,62 @@
+// Hacer funciones globales para el modal de edición
+window.openEditCourtModal = function(courtId) {
+    const currentUser = getCurrentUser && getCurrentUser();
+    if (!(currentUser && currentUser.role === 'admin')) {
+        if (typeof showNotification === 'function') showNotification('Solo el admin puede editar la cancha', 'error');
+        return;
+    }
+    const court = courts.find(c => c.id === courtId);
+    if (!court) return;
+    document.getElementById('editCourtId').value = court.id;
+    document.getElementById('editCourtName').value = court.name;
+    document.getElementById('editCourtSport').value = court.sport;
+    document.getElementById('editCourtDescription').value = court.description;
+    document.getElementById('editCourtAddress').value = court.address;
+    document.getElementById('editCourtPhone').value = court.phone;
+    document.getElementById('editCourtWeekdayPrice').value = court.pricing?.weekday || '';
+    document.getElementById('editCourtWeekendPrice').value = court.pricing?.weekend || '';
+    document.getElementById('editCourtOpen').value = court.hours?.open || '';
+    document.getElementById('editCourtClose').value = court.hours?.close || '';
+    document.getElementById('edit-court-modal').classList.remove('hidden');
+}
+window.closeEditCourtModal = function() {
+    document.getElementById('edit-court-modal').classList.add('hidden');
+}
 // Main application initialization and global functions
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
     loadCourts();
     setupEventListeners();
     checkAuthStatus();
+    setupEditCourtForm();
 });
+// Modal Edit Court logic
+function setupEditCourtForm() {
+    const form = document.getElementById('editCourtForm');
+    if (!form) return;
+    form.onsubmit = function(e) {
+        e.preventDefault();
+        const id = document.getElementById('editCourtId').value;
+        const court = courts.find(c => c.id === id);
+        if (!court) return;
+        court.name = document.getElementById('editCourtName').value;
+        court.sport = document.getElementById('editCourtSport').value;
+        court.description = document.getElementById('editCourtDescription').value;
+        court.address = document.getElementById('editCourtAddress').value;
+        court.phone = document.getElementById('editCourtPhone').value;
+        court.pricing = court.pricing || {};
+        court.pricing.weekday = Number(document.getElementById('editCourtWeekdayPrice').value);
+        court.pricing.weekend = Number(document.getElementById('editCourtWeekendPrice').value);
+        court.hours = court.hours || {};
+        court.hours.open = document.getElementById('editCourtOpen').value;
+        court.hours.close = document.getElementById('editCourtClose').value;
+        // Persist all courts in localStorage
+        localStorage.setItem('courtsData', JSON.stringify(courts));
+        closeEditCourtModal();
+        loadCourts();
+        showNotification('Court updated successfully', 'success');
+    };
+}
 
 // Initialize the application
 function initializeApp() {
@@ -47,8 +99,15 @@ function loadCourts() {
     // Clear existing content
     courtsGrid.innerHTML = '';
     
-    // Load courts data
-    courts.forEach((court, index) => {
+    // Load courts data (from localStorage if available)
+    let loadedCourts = courts;
+    const stored = localStorage.getItem('courtsData');
+    if (stored) {
+        try {
+            loadedCourts = JSON.parse(stored);
+        } catch (e) {}
+    }
+    loadedCourts.forEach((court, index) => {
         setTimeout(() => {
             const courtCard = createCourtCard(court);
             courtsGrid.appendChild(courtCard);

@@ -79,7 +79,7 @@
                 if (response.ok) {
                     localStorage.setItem('currentUser', JSON.stringify(data.user));
                     if (data.user.role === 'admin') {
-                        window.location.href = 'admin.html';
+                        window.location.href = 'index.html';
                     } else {
                         window.location.href = 'index.html';
                     }

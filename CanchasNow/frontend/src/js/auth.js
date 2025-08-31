@@ -91,12 +91,16 @@ function authenticateUser(email, password) {
         if (window.showNotification) {
             window.showNotification(`Welcome back, ${user.name}!`, 'success');
         }
-        
-        return userSession;
+    // Redirigir a index.html tras login para cualquier rol
+    window.location.href = 'index.html';
+    return userSession;
     }
-    
     return null;
 }
+
+// Hacer globales las funciones para uso en window
+window.getCurrentUser = getCurrentUser;
+window.logout = logout;
 
 function logout() {
     const currentUser = getCurrentUser();
