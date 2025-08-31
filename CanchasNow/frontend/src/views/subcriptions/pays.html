@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Complete Purchase | CanchasYa</title>
+  <link rel="stylesheet" href="/CanchasNow/frontend/src/css/pays.css" />
+</head>
+<body>
+  <div class="checkout-container">
+  <a href="#" class="back-btn" onclick="window.history.back(); return false;">⬅ <span>Back</span></a>
+
+    <h2>Complete Purchase</h2>
+
+    <!-- Order Summary -->
+    <div class="section">
+      <h3>🛒 Order Summary</h3>
+      <div class="order-summary">
+        <div class="order-item">
+          <span id="plan-name">Loading plan...</span>
+          <span id="plan-price"></span>
+        </div>
+        <div class="order-total">
+    <span>Total:</span>
+    <span id="total-price"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buyer Information -->
+    <div class="section">
+      <h3>👤 Your Information</h3>
+      <label>Full Name</label>
+      <input type="text" placeholder="John Doe" />
+      <label>Email</label>
+      <input type="email" placeholder="email@example.com" />
+      <label>Address</label>
+      <input type="text" placeholder="Street, number, city" />
+    </div>
+
+    <!-- Payment Methods -->
+    <div class="section">
+      <h3>💳 Payment Method</h3>
+
+      <label class="payment-option">
+        <input type="radio" name="payment" value="paypal" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" />
+        PayPal
+      </label>
+
+      <label class="payment-option">
+        <input type="radio" name="payment" value="card" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png" alt="Card" />
+        Credit Card
+      </label>
+
+      <label class="payment-option">
+        <input type="radio" name="payment" value="googlepay" />
+        <img
+          src="https://play-lh.googleusercontent.com/HArtbyi53u0jnqhnnxkQnMx9dHOERNcprZyKnInd2nrfM7Wd9ivMNTiz7IJP6-mSpwk"
+          alt="Google Pay"
+        />
+        Google Pay
+      </label>
+
+      <label class="payment-option">
+        <input type="radio" name="payment" value="applepay" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple Pay" />
+        Apple Pay
+      </label>
+
+      <!-- PayPal Payment Form -->
+      <form id="paypal-form" class="payment-form" action="#" method="post" style="display:none;">
+        <label>PayPal Email</label>
+        <input type="email" placeholder="email@example.com" name="paypal-email" required />
+        <label>Password</label>
+        <input type="password" placeholder="********" name="paypal-pass" required />
+        <button type="submit">Pay with PayPal</button>
+      </form>
+
+      <!-- Credit Card Payment Form -->
+      <form id="card-form" class="payment-form" action="#" method="post" style="display:none;">
+        <label>Card Number</label>
+        <input type="text" placeholder="XXXX-XXXX-XXXX-XXXX" name="card-number" required />
+        <label>Expiration Date</label>
+        <input type="text" placeholder="MM/YY" name="card-exp" required />
+        <label>CVV</label>
+        <input type="text" placeholder="123" name="card-cvv" required />
+        <button type="submit">Pay with Card</button>
+      </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal" id="confirmationModal" style="display:none;">
+      <div class="modal-content">
+        <h3>✅ Payment Successful</h3>
+        <p>Thank you for your purchase!<br /> You will receive an email with the details.</p>
+        <button class="close-btn" id="closeModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- External JavaScript -->
+  <script>document.addEventListener("DOMContentLoaded", () => {
+  const planNameElement = document.getElementById("plan-name");
+  const planPriceElement = document.getElementById("plan-price");
+  const totalPriceElement = document.getElementById("total-price");
+
+  // Try to get bookingData from sessionStorage
+  const bookingDataRaw = sessionStorage.getItem('bookingData');
+  if (bookingDataRaw) {
+    const bookingData = JSON.parse(bookingDataRaw);
+    let summary = bookingData.court || '';
+    if (bookingData.sport) summary += ` - ${bookingData.sport}`;
+    if (bookingData.courtType) summary += ` - ${bookingData.courtType}`;
+    if (bookingData.matchType) summary += ` - ${bookingData.matchType}`;
+    summary += ` (${bookingData.date} ${bookingData.time})`;
+    planNameElement.textContent = summary;
+    planPriceElement.textContent = `$${bookingData.price}`;
+    totalPriceElement.textContent = `$${bookingData.price}`;
+  } else {
+    // Plan table
+    const plans = {
+      "usuario-basico": {
+        name: "Basic Plan (User)",
+        price: "$0"
+      },
+      "usuario-premium": {
+        name: "Premium Plan (User)",
+        price: "$9.99"
+      },
+      "admin-estandar": {
+        name: "Standard Plan (Admin)",
+        price: "$19.99"
+      },
+      "admin-premium": {
+        name: "Premium Plan (Admin)",
+        price: "$39.99"
+      }
+    };
+
+    // Get URL parameter
+    const params = new URLSearchParams(window.location.search);
+    const selectedPlan = params.get("plan");
+
+    if (selectedPlan && plans[selectedPlan]) {
+      const plan = plans[selectedPlan];
+      planNameElement.textContent = plan.name;
+      planPriceElement.textContent = plan.price;
+      totalPriceElement.textContent = plan.price;
+    } else {
+      planNameElement.textContent = "No valid plan selected.";
+      planPriceElement.textContent = "";
+      totalPriceElement.textContent = "";
+    }
+  }
+});
+</script>
+  <script src="/CanchasNow/frontend/src/js/pay_finish.js"></script>
+</body>
+</html>

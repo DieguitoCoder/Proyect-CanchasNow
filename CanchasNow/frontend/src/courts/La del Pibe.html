@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La del Pibe - Premium Football Court | CanchasYa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/styles.css" rel="stylesheet">
+</head>
+
+<body class="bg-gray-50">
+    <script>
+    // Utilidad para saber si es admin (mock, reemplazar por tu lógica real)
+    function isAdmin() {
+        const user = JSON.parse(localStorage.getItem('currentUser'));
+        return user && user.role === 'admin';
+    }
+    </script>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../views/website/index.html" class="flex items-center" id="logo-link">
+                        <img src="../assets/icons/logo.svg" alt="CanchasYa" class="h-10 w-auto" style="cursor:pointer;">
+                        <span class="ml-3 text-2xl font-bold text-blue-600">CanchasYa</span>
+                    </a>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            var logo = document.querySelector('#logo-link img');
+                            if (logo) {
+                                logo.onclick = function() {
+                                    window.location.href = '../views/website/index.html';
+                                };
+                            }
+                        });
+                    </script>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="../views/website/index.html" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <i class="fas fa-arrow-left mr-2"></i>Back to Courts
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <!-- Botón Edit Court solo para admin -->
+    <div class="fixed top-24 right-10 z-50" id="editCourtBtnContainer" style="display:none;">
+        <button onclick="openEditCourtModal()" class="bg-yellow-500 text-white px-6 py-2 rounded-lg shadow-lg hover:bg-yellow-600 font-bold">Edit Court</button>
+    </div>
+    <section class="pt-16 relative">
+        <div class="h-96 bg-gradient-to-r from-green-600 to-blue-600 relative overflow-hidden">
+            <img src="../assets/courts/La del Pibe/Banner.png" alt="La del Pibe"
+                class="w-full h-full object-cover opacity-80">
+            <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <div class="text-center text-white">
+                    <h1 class="text-5xl font-bold mb-4">La del Pibe</h1>
+                    <p class="text-xl mb-6">Premium Football Experience in Barranquilla</p>
+                    <div class="flex items-center justify-center space-x-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-star text-yellow-400 mr-2"></i>
+                            <span class="text-lg">4.6 Rating</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-futbol text-white mr-2"></i>
+                            <span class="text-lg">Football Court</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-dollar-sign text-green-400 mr-2"></i>
+                            <span class="text-lg">From $25/hour</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid lg:grid-cols-3 gap-12">
+            <!-- Left Column - Court Details -->
+            <div class="lg:col-span-2 space-y-8">
+                <!-- About Section -->
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">About La del Pibe</h2>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">
+                        Experience football at its finest at La del Pibe, Barranquilla's premier football facility.
+                        Our state-of-the-art artificial grass field provides the perfect surface for both casual games
+                        and competitive matches. With professional lighting and modern amenities, we ensure every game
+                        is played to perfection.
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                            <span class="text-gray-700">Professional Artificial Grass</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                            <span class="text-gray-700">LED Floodlighting</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                            <span class="text-gray-700">Changing Rooms</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                            <span class="text-gray-700">Free Parking</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                            <span class="text-gray-700">Equipment Rental</span>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <i class="fas fa-check-circle text-green-500 text-xl"></i>
+                            <span class="text-gray-700">Refreshment Area</span>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                <!-- Gallery Section -->
+                <!-- Modal Edit Court (solo admin) -->
+                <div id="editCourtModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+                    <div class="bg-white rounded-xl shadow-lg p-8 w-full max-w-lg relative">
+                        <button onclick="closeEditCourtModal()" class="absolute top-3 right-3 text-gray-400 hover:text-gray-700 text-2xl">&times;</button>
+                        <h2 class="text-2xl font-bold mb-6 text-center">Edit Court</h2>
+                        <form id="editCourtForm" class="space-y-4">
+                            <div>
+                                <label class="block text-gray-700 text-sm font-bold mb-1">Name</label>
+                                <input type="text" id="editCourtName" class="w-full px-4 py-2 border rounded-lg" required>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-bold mb-1">Description</label>
+                                <textarea id="editCourtDescription" class="w-full px-4 py-2 border rounded-lg" required></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-bold mb-1">Banner Image</label>
+                                <input type="text" id="editBannerUrl" class="w-full px-4 py-2 border rounded-lg mb-2" placeholder="Paste image URL or upload below">
+                                <input type="file" id="editBannerFile" accept="image/*" class="mb-2">
+                                <img id="previewBanner" src="" alt="Preview Banner" class="w-full h-32 object-cover rounded mb-2 hidden">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 text-sm font-bold mb-1">Gallery Images (comma separated URLs or upload)</label>
+                                <input type="text" id="editGalleryUrls" class="w-full px-4 py-2 border rounded-lg mb-2" placeholder="Paste URLs, separated by comma">
+                                <input type="file" id="editGalleryFiles" accept="image/*" multiple class="mb-2">
+                                <div id="previewGallery" class="grid grid-cols-2 gap-2"></div>
+                            </div>
+                            <div class="flex justify-end mt-6">
+                                <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 font-bold">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Gallery</h2>
+                    <div id="galleryGrid" class="grid md:grid-cols-2 gap-4">
+                        <img src="../assets/courts/La del Pibe/Gallery-Pibe.png" alt="Court View 1"
+                            class="rounded-lg shadow-md hover:shadow-lg transition duration-300 object-cover w-full h-64">
+                        <img src="../assets/courts/La del Pibe/Gallery-Pibe-2.png" alt="Court View 2"
+                            class="rounded-lg shadow-md hover:shadow-lg transition duration-300 object-cover w-full h-64">
+                    </div>
+                </div>
+
+                <!-- Location Section -->
+                <div class="bg-white rounded-xl shadow-lg p-8">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Location & Contact</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-map-marker-alt text-blue-600 text-xl mr-3"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Address</h3>
+                                    <p class="text-gray-600">a 45e-193, Cra 1C #45e63, Barranquilla, Atlántico, Colombia</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center mb-4">
+                                <i class="fas fa-phone text-blue-600 text-xl mr-3"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Phone</h3>
+                                    <p class="text-gray-600">53624546</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-clock text-blue-600 text-xl mr-3"></i>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">Hours</h3>
+                                    <p class="text-gray-600">5:00 - 23:00 Daily</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-gray-100 rounded-lg overflow-hidden">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3917.4814872545794!2d-74.80136252381533!3d10.926955322079204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef5d29491d9c397%3A0xb7aafddf3eb3c5ef!2sComplejo%20Deportivo%20%22El%20Pibe%22%20Valderrama!5e0!3m2!1ses-419!2sco!4v1756212510811!5m2!1ses-419!2sco"
+                                class="w-full h-64 border-0" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade" alt="Error al cargar el mapa">
+                            </iframe>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column - Booking Widget -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-lg p-8 sticky top-24">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Book Your Game</h3>
+
+                    <!-- Pricing Display -->
+                    <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-gray-700">Weekday Rate</span>
+                            <span class="text-2xl font-bold text-blue-600">$25/hour</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-700">Weekend Rate</span>
+                            <span class="text-2xl font-bold text-blue-600">$35/hour</span>
+                        </div>
+                    </div>
+
+                    <!-- Booking Form -->
+                    <form onsubmit="handleBooking(event)">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Select Date</label>
+                            <input type="date" id="bookingDate" required min=""
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                        </div>
+
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Available Times</label>
+                            <div id="timeSlots" class="grid grid-cols-2 gap-2">
+                                <!-- Time slots will be generated here -->
+                            </div>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300 font-semibold">
+                            Book Now
+                        </button>
+                    </form>
+
+                    <!-- Additional Services -->
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <h4 class="text-lg font-semibold text-gray-900 mb-4">Additional Services</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-700">Ball Rental</span>
+                                <span class="text-green-600 font-semibold">$5</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-700">Jersey Set (11 players)</span>
+                                <span class="text-green-600 font-semibold">$15</span>
+                            </div>
+                            <div class="flex items-center justify-between">
+                                <span class="text-gray-700">Referee Service</span>
+                                <span class="text-green-600 font-semibold">$25</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900">Login Required</h2>
+                <button onclick="closeLoginModal()" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <p class="text-gray-600 mb-6">Please login to make a reservation at La del Pibe.</p>
+            <div class="space-y-3">
+                <button onclick="window.location.href='../login.html'"
+                    class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                    Login to Your Account
+                </button>
+                <button onclick="closeLoginModal()"
+                    class="w-full border border-gray-300 text-gray-700 py-2 rounded-lg hover:bg-gray-50 transition duration-300">
+                    Continue Browsing
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../data/courts.js"></script>
+    <script src="../js/booking.js"></script>
+    <script>
+        // Initialize date picker with today's date
+        document.addEventListener('DOMContentLoaded', function () {
+            const today = new Date().toISOString().split('T')[0];
+            const bookingDateInput = document.getElementById('bookingDate');
+            bookingDateInput.min = today;
+            bookingDateInput.value = today;
+            generateTimeSlots();
+            bookingDateInput.addEventListener('change', function() {
+                generateTimeSlots();
+            });
+        });
+
+        function generateTimeSlots() {
+            const timeSlotsContainer = document.getElementById('timeSlots');
+            const slots = [];
+
+            // Generate time slots from 6 AM to 10 PM
+            for (let hour = 6; hour <= 21; hour++) {
+                const timeString = hour.toString().padStart(2, '0') + ':00';
+                slots.push(timeString);
+            }
+
+            timeSlotsContainer.innerHTML = slots.map((time, i) => {
+                // Two columns grid, highlight selected, match first image style
+                return `<button type="button" onclick="selectTimeSlot('${time}')"
+                    class="time-slot w-full px-3 py-2 mb-2 border border-gray-300 rounded-lg text-sm bg-white hover:bg-green-50 hover:border-green-300 transition duration-200">
+                    ${time}
+                </button>`;
+            }).reduce((acc, btn, idx) => {
+                // Group into rows of 2
+                if (idx % 2 === 0) acc += '<div class="flex gap-2">';
+                acc += btn;
+                if (idx % 2 === 1 || idx === slots.length - 1) acc += '</div>';
+                return acc;
+            }, '');
+        }
+
+        let selectedTime = null;
+
+        function selectTimeSlot(time) {
+            // Remove previous selection
+            document.querySelectorAll('.time-slot').forEach(slot => {
+                slot.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+                slot.classList.add('border-gray-300');
+            });
+
+            // Add selection to clicked slot
+            event.target.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+            event.target.classList.remove('border-gray-300');
+            selectedTime = time;
+        }
+
+        function handleBooking(event) {
+            event.preventDefault();
+
+            if (!selectedTime) {
+                alert('Please select a time slot.');
+                return;
+            }
+
+            // Check if user is logged in (mock check)
+            const isLoggedIn = localStorage.getItem('currentUser');
+
+            if (!isLoggedIn) {
+                openLoginModal();
+                return;
+            }
+
+            // Guardar datos en sessionStorage
+            const selectedDate = document.getElementById('bookingDate').value;
+            const isWeekend = new Date(selectedDate).getDay() === 0 || new Date(selectedDate).getDay() === 6;
+            const price = isWeekend ? 35 : 25;
+            const bookingData = {
+                court: 'La del Pibe',
+                date: selectedDate,
+                time: selectedTime,
+                price: price
+            };
+            sessionStorage.setItem('bookingData', JSON.stringify(bookingData));
+            // Redirigir a pays.html
+            window.location.href = '../views/subcriptions/pays.html';
+        }
+
+        function getPrice() {
+            const selectedDate = new Date(document.getElementById('bookingDate').value);
+            const isWeekend = selectedDate.getDay() === 0 || selectedDate.getDay() === 6;
+            return isWeekend ? 35 : 25;
+        }
+
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.remove('hidden');
+            document.getElementById('loginModal').classList.add('flex');
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.add('hidden');
+            document.getElementById('loginModal').classList.remove('flex');
+        }
+    </script>
+</body>
+<script>
+
+
+// Cargar datos de localStorage si existen, si no usar mock
+let courtData = JSON.parse(localStorage.getItem('courtData_LaDelPibe')) || {
+    name: 'La del Pibe',
+    description: `Experience football at its finest at La del Pibe, Barranquilla's premier football facility. Our state-of-the-art artificial grass field provides the perfect surface for both casual games and competitive matches. With professional lighting and modern amenities, we ensure every game is played to perfection.`,
+    banner: '../assets/courts/La del Pibe/Banner.png',
+    gallery: [
+        '../assets/courts/La del Pibe/Gallery-Pibe.png',
+        '../assets/courts/La del Pibe/Gallery-Pibe-2.png'
+    ]
+};
+
+// Al cargar la página, actualiza el HTML con los datos editados
+document.addEventListener('DOMContentLoaded', function() {
+    updateCourtView();
+});
+
+// Mostrar botón solo si es admin
+if (isAdmin()) {
+    document.getElementById('editCourtBtnContainer').style.display = 'block';
+}
+
+function openEditCourtModal() {
+    document.getElementById('editCourtModal').classList.remove('hidden');
+    document.getElementById('editCourtName').value = courtData.name;
+    document.getElementById('editCourtDescription').value = courtData.description;
+    document.getElementById('editBannerUrl').value = courtData.banner;
+    document.getElementById('previewBanner').src = courtData.banner;
+    document.getElementById('previewBanner').classList.remove('hidden');
+    document.getElementById('editGalleryUrls').value = courtData.gallery.join(', ');
+    renderGalleryPreview(courtData.gallery);
+}
+
+function closeEditCourtModal() {
+    document.getElementById('editCourtModal').classList.add('hidden');
+}
+
+// Banner preview on URL or file change
+document.getElementById('editBannerUrl').addEventListener('input', function() {
+    document.getElementById('previewBanner').src = this.value;
+    document.getElementById('previewBanner').classList.remove('hidden');
+});
+document.getElementById('editBannerFile').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            document.getElementById('previewBanner').src = ev.target.result;
+            document.getElementById('previewBanner').classList.remove('hidden');
+        };
+        reader.readAsDataURL(file);
+    }
+});
+
+// Gallery preview on URLs or files change
+document.getElementById('editGalleryUrls').addEventListener('input', function() {
+    const urls = this.value.split(',').map(s => s.trim()).filter(Boolean);
+    renderGalleryPreview(urls);
+});
+document.getElementById('editGalleryFiles').addEventListener('change', function(e) {
+    const files = Array.from(e.target.files);
+    const urls = [];
+    let loaded = 0;
+    if (!files.length) return;
+    files.forEach(file => {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            urls.push(ev.target.result);
+            loaded++;
+            if (loaded === files.length) {
+                renderGalleryPreview(urls);
+            }
+        };
+        reader.readAsDataURL(file);
+    });
+});
+
+function renderGalleryPreview(urls) {
+    const container = document.getElementById('previewGallery');
+    container.innerHTML = '';
+    urls.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.className = 'rounded shadow object-cover w-full h-24';
+        container.appendChild(img);
+    });
+}
+
+// Guardar cambios
+document.getElementById('editCourtForm').onsubmit = function(e) {
+    e.preventDefault();
+    courtData.name = document.getElementById('editCourtName').value;
+    courtData.description = document.getElementById('editCourtDescription').value;
+    // Banner: prioriza archivo local si existe
+    const bannerFile = document.getElementById('editBannerFile').files[0];
+    if (bannerFile) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+            courtData.banner = ev.target.result;
+            saveAndUpdate();
+        };
+        reader.readAsDataURL(bannerFile);
+    } else {
+        courtData.banner = document.getElementById('editBannerUrl').value;
+        saveAndUpdate();
+    }
+    // Gallery: prioriza archivos locales si existen
+    const galleryFiles = Array.from(document.getElementById('editGalleryFiles').files);
+    if (galleryFiles.length) {
+        const urls = [];
+        let loaded = 0;
+        galleryFiles.forEach(file => {
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                urls.push(ev.target.result);
+                loaded++;
+                if (loaded === galleryFiles.length) {
+                    courtData.gallery = urls;
+                    saveAndUpdate();
+                }
+            };
+            reader.readAsDataURL(file);
+        });
+    } else {
+        courtData.gallery = document.getElementById('editGalleryUrls').value.split(',').map(s => s.trim()).filter(Boolean);
+        saveAndUpdate();
+    }
+    closeEditCourtModal();
+    return false;
+    function saveAndUpdate() {
+        localStorage.setItem('courtData_LaDelPibe', JSON.stringify(courtData));
+        updateCourtView();
+    }
+};
+
+function updateCourtView() {
+    // Actualiza el banner
+    const bannerImg = document.querySelector('section .relative img');
+    if (bannerImg) bannerImg.src = courtData.banner;
+    // Actualiza la galería
+    const galleryDiv = document.getElementById('galleryGrid');
+    if (galleryDiv) {
+        galleryDiv.innerHTML = '';
+        courtData.gallery.forEach(url => {
+            const img = document.createElement('img');
+            img.src = url;
+            img.className = 'rounded-lg shadow-md hover:shadow-lg transition duration-300 object-cover w-full h-64';
+            galleryDiv.appendChild(img);
+        });
+    }
+    // Actualiza nombre y descripción
+    const h1 = document.querySelector('h1.text-5xl');
+    if (h1) h1.textContent = courtData.name;
+    const h2 = document.querySelector('h2.text-3xl');
+    if (h2) h2.textContent = 'About ' + courtData.name;
+    const pTitle = document.querySelector('p.text-xl.mb-6');
+    if (pTitle) pTitle.textContent = 'Premium Football Experience in Barranquilla';
+    const pDesc = document.querySelector('p.text-gray-600.text-lg.leading-relaxed.mb-6');
+    if (pDesc) pDesc.textContent = courtData.description;
+}
+</script>
+
+</html>

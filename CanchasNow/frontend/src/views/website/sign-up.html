@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up - CanchasYa</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 min-h-screen flex items-center justify-center">
+
+    <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4">
+        <div class="text-center mb-8">
+            <img src="../../../../frontend/src/assets/icons/logo.svg" alt="CanchasYa" class="h-12 w-auto mx-auto mb-4">
+            <h1 class="text-3xl font-bold text-gray-900">Create Account</h1>
+            <p class="text-gray-600 mt-2">Sign up to start booking your cancha</p>
+        </div>
+
+        <form id="signUpForm" onsubmit="handleSignUp(event)">
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Full Name</label>
+                <div class="relative">
+                    <input type="text" id="name" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 pl-12">
+                    <i class="fas fa-user absolute left-4 top-4 text-gray-400"></i>
+                </div>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Email Address</label>
+                <div class="relative">
+                    <input type="email" id="email" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 pl-12">
+                    <i class="fas fa-envelope absolute left-4 top-4 text-gray-400"></i>
+                </div>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Phone</label>
+                <div class="relative">
+                    <input type="tel" id="phone" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 pl-12">
+                    <i class="fas fa-phone absolute left-4 top-4 text-gray-400"></i>
+                </div>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Password</label>
+                <div class="relative">
+                    <input type="password" id="password" required minlength="6"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 pl-12">
+                    <i class="fas fa-lock absolute left-4 top-4 text-gray-400"></i>
+                </div>
+            </div>
+            <!-- Rol oculto, solo para referencia en el front, no visible ni editable -->
+            <input type="hidden" id="role" value="user">
+            <button type="submit"
+                class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300 font-semibold">
+                Sign Up
+            </button>
+        </form>
+
+        <div class="mt-6 text-center">
+            <p class="text-gray-600">Already have an account?
+                <a href="login.html" class="text-blue-600 hover:underline font-semibold">Sign in here</a>
+            </p>
+        </div>
+        <div class="mt-6 text-center">
+            <a href="index.html" class="text-gray-500 hover:text-gray-700 text-sm">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Home
+            </a>
+        </div>
+    </div>
+
+    <script src="../../../../frontend/src/js/auth.js"></script>
+    <script>
+        async function handleSignUp(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const password = document.getElementById('password').value;
+            try {
+                const response = await fetch('http://localhost:3000/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, phone, password })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    window.location.href = 'login.html';
+                } else {
+                    alert(data.message || 'Error al registrar usuario');
+                }
+            } catch (err) {
+                alert('Error de conexión con el servidor');
+            }
+        }
+    </script>
+
+    <script src="../../../../frontend/src/js/auth.js"></script>
+    <script>
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Mock authentication
+            if (email && password) {
+                const user = authenticateUser(email, password);
+                if (user) {
+                    if (user.role === 'admin') {
+                        window.location.href = 'index.html';
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

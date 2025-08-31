@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plans and Subscriptions - CanchasNow</title>
+  <link rel="stylesheet" href="/CanchasNow/frontend/src/css/styles.css">
+</head>
+<body>
+  <!-- MAIN HEADER -->
+  <header class="header">
+    <div class="container header__content">
+      <h1 class="header__logo">CanchasNow</h1>
+      <nav class="nav" aria-label="Main menu">
+        <ul class="nav__list">
+          <li><a href="#" class="nav__link">Home</a></li>
+          <li><a href="#usuarios" class="nav__link">Users</a></li>
+          <li><a href="#administradores" class="nav__link">Admins</a></li>
+          <li><a href="#contacto" class="nav__link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <!-- USERS PLANS SECTION -->
+    <section id="usuarios" class="section section--alt" aria-labelledby="heading-users">
+      <div class="container">
+        <h2 id="heading-users" class="section__title">Plans for Users</h2>
+        <p class="section__lead">
+          Designed for those who book courts occasionally or train regularly. Choose the plan that best suits your play style.
+        </p>
+
+        <div class="plans-grid">
+          <!-- FREE PLAN -->
+          <article class="plan-card" aria-label="Free Plan for Users">
+            <div class="plan-card__head">
+              <span class="badge">Free</span>
+              <h3 class="plan-card__title">Basic Plan</h3>
+              <p class="plan-card__price">$0 <span class="plan-card__period">/month</span></p>
+            </div>
+            <ul class="plan-card__features">
+              <li><strong>Access to basic schedules</strong></li>
+              <li><strong>Online reservation management</strong></li>
+            </ul>
+            <a href="pays.html" class="btn btn--primary">Subscribe</a>
+          </article>
+
+          <!-- PREMIUM PLAN -->
+          <article class="plan-card plan-card--premium" aria-label="Premium Plan for Users">
+            <div class="plan-card__head">
+              <span class="badge">Premium</span>
+              <h3 class="plan-card__title">Premium Plan</h3>
+              <p class="plan-card__price">$4.99 <span class="plan-card__period">/month</span></p>
+            </div>
+            <ul class="plan-card__features">
+              <li><strong>Access to all available schedules</strong></li>
+              <li><strong>Match notifications and reminders</strong></li>
+              <li><strong>Discounts:</strong> Get up to <span style="color:green">15% off</span> on products and <span style="color:green">10% off</span> on tournament registrations</li>
+            </ul>
+            <a href="pays.html?plan=usuario-premium" class="btn btn--dark">Subscribe</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMINS PLANS SECTION -->
+    <section id="administradores" class="section" aria-labelledby="heading-admins">
+      <div class="container">
+        <h2 id="heading-admins" class="section__title">Plans for Administrators</h2>
+        <p class="section__lead">
+          If you're a sports court owner, these plans are designed to help you manage reservations, increase your income, and offer more services to your clients.
+        </p>
+
+        <div class="plans-grid">
+          <!-- STANDARD ADMIN PLAN -->
+          <article class="plan-card" aria-label="Standard Admin Plan">
+            <div class="plan-card__head">
+              <span class="badge badge--admin">Admin</span>
+              <h3 class="plan-card__title">Standard Plan</h3>
+              <p class="plan-card__price">$9.99 <span class="plan-card__period">/month</span></p>
+            </div>
+            <ul class="plan-card__features">
+              <li><strong>Manage user reservations</strong></li>
+              <li><strong>View basic reports</strong></li>
+              <li><strong>Manage available schedules</strong></li>
+              <li><strong>Email support</strong></li>
+            </ul>
+            <a href="pays.html?plan=admin-estandar" class="btn btn--primary">Subscribe</a>
+          </article>
+
+          <!-- PREMIUM ADMIN PLAN -->
+          <article class="plan-card plan-card--premium" aria-label="Premium Admin Plan">
+            <div class="plan-card__head">
+              <span class="badge badge--admin">Admin</span>
+              <h3 class="plan-card__title">Premium Plan</h3>
+              <p class="plan-card__price">$19.99 <span class="plan-card__period">/month</span></p>
+            </div>
+            <ul class="plan-card__features">
+              <li><strong>Premium features:</strong> Everything included in the standard plan</li>
+              <li><strong>Add more courts:</strong> Expand your business by adding unlimited courts to your profile</li>
+              <li><strong>Advertising:</strong> Promote your courts with featured ads on our homepage</li>
+              <li><strong>Highlight tournaments:</strong> Showcase your tournaments to attract more players</li>
+            </ul>
+            <a href="pays.html?plan=admin-premium" class="btn btn--dark">Subscribe</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="contacto" class="footer">
+    <div class="container footer__content">
+      <p>&copy; 2025 CanchasNow. All rights reserved.</p>
+      <nav class="footer__nav" aria-label="Footer menu">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms and Conditions</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
