@@ -98,13 +98,9 @@ function createCourtCard(court) {
             </div>
             
             <div class="flex space-x-2">
-                <button onclick="viewCourtDetails('${court.id}')" 
-                        class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300 text-sm font-semibold">
+                <button onclick="viewCourtDetails('${court.id}')"
+                        class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300 text-base font-bold">
                     View Details
-                </button>
-                <button id="book-now-btn-${court.id}" onclick="bookNow('${court.id}')" 
-                        class="bg-green-600 text-white py-2 px-4 rounded-lg hover:bg-green-700 transition duration-300 text-sm font-semibold">
-                    Book Now
                 </button>
                 ${window.isAdmin && window.isAdmin() ? `
                 <button id="edit-court-btn-${court.id}" onclick="openEditCourtModal('${court.id}')" 
