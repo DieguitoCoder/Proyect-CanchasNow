@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import { pool } from "./db.js";
 import authRoutes from "./routes/auth.routes.js"; // Importing authRoutes for authentication
 import usersRoutes from "./routes/users.routes.js";
 import fieldsRoutes from "./routes/fields.routes.js";
@@ -11,6 +10,7 @@ import ownersRoutes from "./routes/owners.routes.js";
 import schedulesRoutes from "./routes/schedules.routes.js";
 import salesRoutes from "./routes/sales.routes.js";
 import bcrypt from "bcryptjs";
+import connection from "./db.js";
 
 dotenv.config();
 const app = express();
