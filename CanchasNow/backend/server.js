@@ -44,6 +44,7 @@ app.use("/api/schedules", schedulesRoutes);
 app.use("/api/sales", salesRoutes);
 
 const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Servidor en puerto ${PORT}`));
 
 async function ensureDB() {
     try {
