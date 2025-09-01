@@ -10,7 +10,7 @@ import ownersRoutes from "./routes/owners.routes.js";
 import schedulesRoutes from "./routes/schedules.routes.js";
 import salesRoutes from "./routes/sales.routes.js";
 import bcrypt from "bcryptjs";
-import connection from "./db.js";
+import pool from './db.js';
 
 dotenv.config();
 const app = express();
