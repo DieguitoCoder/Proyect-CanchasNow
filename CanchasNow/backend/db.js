@@ -14,4 +14,4 @@ export const pool = mysql.createPool({
     
 });
 
-module.exports = connection;
+export default = connection;
