@@ -1,5 +1,4 @@
-CREATE DATABASE IF NOT EXISTS CanchasNow;
-USE CanchasNow;
+USE bkrdylmem3caabrxqab6;
 
 -- Users table
 CREATE TABLE users (
